@@ -1,9 +1,9 @@
-import TransitionLink from '@/components/TransitionLink';
 import { cn } from '@/lib/utils';
 import { IProject } from '@/types';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
 
 interface Props {
@@ -101,8 +101,9 @@ const Project = ({ index, project, selectedProject, onMouseEnter }: Props) => {
     });
 
     return (
-        <TransitionLink
-            href={`/projects/${project.slug}`}
+        <Link
+            href={`${project.liveUrl}`}
+            target="_blank"
             className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -166,7 +167,7 @@ const Project = ({ index, project, selectedProject, onMouseEnter }: Props) => {
                     </div>
                 </div>
             </div>
-        </TransitionLink>
+        </Link>
     );
 };
 

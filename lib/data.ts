@@ -118,106 +118,101 @@ export const MY_STACK = {
 
 export const PROJECTS: IProject[] = [
     {
-        title: 'MTI Electronics',
-        slug: 'mti-electronics',
-        liveUrl: 'https://mti-electronics.vercel.app/',
-        year: 2025,
+        title: 'Delve',
+        slug: 'delve',
+        liveUrl: 'https://delve.fun/',
+        year: 2024,
         description: `
-      A complete agency portfolio platform built for MTI Electronics to showcase their services, blog content, and product offerings. <br/> <br/>
-      
-      Key Features:<br/>
-      <ul>
-        <li>🛠️ Service Display System: Interactive service showcase with synchronized sliders</li>
-        <li>✍️ Blog Management: SEO-friendly blog with categorization and search</li>
-        <li>🛒 Product Catalog: Organized product display with filtering capabilities</li>
-        <li>📱 Fully Responsive: Optimized for all device sizes</li>
-        <li>⚡ Fast Performance: Optimized Next.js frontend with ISR (Incremental Static Regeneration)</li>
-      </ul><br/>
-      
-      Technical Highlights:
-      <ul>
-        <li>Implemented complex slider synchronization logic using Swiper.js</li>
-        <li>Customized Payload CMS admin panel for intuitive content management</li>
-        <li>Developed reusable UI components with shadcn for design consistency</li>
-        <li>Configured efficient data fetching strategies in Next.js</li>
-      </ul>
-      `,
+    A fun language learning platform that elevates your experience through interactive 3D challenges and engaging content. <br/> <br/>
+    
+    Key Features:<br/>
+    <ul>
+      <li>🎮 Interactive 3D Challenges: Immersive language exercises powered by Three.js</li>
+      <li>🛠️ Service Showcase: Dynamic service display with synchronized sliders</li>
+      <li>✍️ Blog Management: SEO-optimized blog with categorization, search, and dynamic meta tags</li>
+      <li>🛒 Product Catalog: Organized course and resource display with advanced filtering</li>
+      <li>📱 Fully Responsive: Seamless experience across all device sizes</li>
+      <li>⚡ Fast Performance: Optimized Next.js frontend with ISR for rapid load times</li>
+    </ul><br/>
+    
+    Technical Highlights:
+    <ul>
+      <li>Built synchronized slider logic with Swiper.js for engaging service showcases</li>
+      <li>Customized Payload CMS for intuitive management of blogs, services, and products</li>
+      <li>Developed reusable UI components with shadcn and Tailwind CSS for consistent design</li>
+      <li>Implemented efficient data fetching with Next.js ISR and SWR for dynamic content</li>
+      <li>Integrated Three.js for interactive 3D learning challenges</li>
+    </ul>
+  `,
         role: `
-      Full-Stack Developer <br/>
-      Owned the entire development lifecycle:
-      <ul>
-        <li>✅ Backend: Configured Payload CMS with custom collections for services, blogs, and products</li>
-        <li>🎨 Frontend: Built all UI components using Tailwind CSS and shadcn</li>
-        <li>🔄 State Management: Implemented client-side data fetching and caching</li>
-        <li>🖥️ CMS Customization: Created admin interfaces for content editors</li>
-        <li>🚀 Deployment: Set up CI/CD pipeline for Vercel hosting</li>
-        <li>🧩 Third-Party Integration: Added Swiper.js for interactive sliders</li>
-      </ul>
-      `,
+    Full-Stack Developer <br/>
+    Owned the entire development lifecycle:
+    <ul>
+      <li>✅ Backend: Configured Payload CMS with custom collections for services, blogs, and products</li>
+      <li>🎨 Frontend: Built responsive UI components using Tailwind CSS and shadcn</li>
+      <li>🔄 State Management: Used Zustand for client-side state and SWR for data fetching/caching</li>
+      <li>🖥️ CMS Customization: Designed admin interfaces for content editors</li>
+      <li>🚀 Deployment: Set up CI/CD pipeline for Vercel hosting</li>
+      <li>🧩 Third-Party Integration: Added Swiper.js for sliders and Three.js for 3D challenges</li>
+    </ul>
+  `,
         techStack: [
             'Next.js',
-            'Payload CMS',
+            'Three.js',
             'Tailwind CSS',
             'shadcn',
-            'Swiper.js',
+            'Zustand',
             'React Hook Form',
-            'Vercel',
+            'SWR',
+            'Swiper.js',
+            'Payload CMS',
         ],
-        thumbnail: '/projects/thumbnail/mti-electronics.webp',
-        longThumbnail: '/projects/long/mti-electronics.webp',
+        thumbnail: '/projects/thumbnail/delve.jpeg',
+        longThumbnail: '/projects/long/delve.png',
         images: [
-            '/projects/images/mti-electronics-1.webp',
-            '/projects/images/mti-electronics-2.webp',
+            '/projects/images/delve-1.png',
+            '/projects/images/delve-2.png',
         ],
     },
     {
-        title: 'Epikcart',
-        slug: 'epikcart',
+        title: 'BrandDrive',
+        slug: 'brandDrive',
         techStack: [
             'React',
             'Redux',
-            'React i18n',
+            'Ionic',
             'Tailwind CSS',
-            'Framer Motion',
+            'React-hook-form',
             'debouncing',
             'Api Integration',
         ],
-        thumbnail: '/projects/thumbnail/epikcart.jpg',
-        longThumbnail: '/projects/long/epikcart.jpg',
+        thumbnail: '/projects/thumbnail/branddrive.png',
+        longThumbnail: '/projects/long/brand-drive.jpg',
         images: [
-            '/projects/images/epikcart-1.png',
-            '/projects/images/epikcart-2.png',
-            '/projects/images/epikcart-3.png',
-            '/projects/images/epikcart-4.png',
-            '/projects/images/epikcart-5.png',
+            '/projects/images/brand-drive-1.png',
+            '/projects/images/brand-drive-2.png',
         ],
-        liveUrl: 'https://demo.epikcart.siphertech.com/',
-        year: 2023,
-        description: `Epikcart is a feature-rich, scalable e-commerce platform tailored for large businesses. It features dynamic product filtering, multi-language support with RTL, advanced inventory management, order tracking, and refund systems, offering a comprehensive solution for multi-vendor operations.`,
-        role: `As the frontend developer in a team of five, I: <br/>
-        - Built the frontend from scratch using React, Redux, RTK Query, and Tailwind CSS.<br/>
+        liveUrl: 'https://branddrive.co/',
+        year: 2024,
+        description: `BrandDrive is a seamless bookkeeping, smart payments, AI insights, and e-commerce solutions—everything your business needs in one platform.`,
+        role: `As the frontend developer in a team of ten, I: <br/>
+        - Built new frontend components using React, Redux, RTK Query, and Tailwind CSS.<br/>
         - Developed dynamic filtering logic for the product search page with admin-configurable parameters.<br/>
         - Integrated multi-language support with React i18n, including RTL handling.<br/>
         - Delivered a responsive, user-friendly interface in collaboration with the UI/UX designer.`,
     },
     {
-        title: 'Resume Roaster',
-        slug: 'resume-roaster',
-        techStack: [
-            'GPT-4',
-            'Next.js',
-            'Postgressql',
-            'Prisma',
-            'Tailwind CSS',
-        ],
-        thumbnail: '/projects/thumbnail/resume-roaster.jpg',
-        longThumbnail: '/projects/long/resume-roaster.jpg',
+        title: 'Unique Kids House',
+        slug: 'unique-kids-house',
+        techStack: ['Next.js', 'Tailwind CSS', 'Vercel'],
+        thumbnail: '/projects/thumbnail/unique-kids-house.png',
+        longThumbnail: '/projects/long/unique-kids-house.jpg',
         images: [
             '/projects/images/resume-roaster-1.png',
             '/projects/images/resume-roaster-2.png',
             '/projects/images/resume-roaster-3.png',
         ],
-        liveUrl: 'https://resume-roaster.vercel.app/',
+        liveUrl: 'https://www.unique-kids-house.com.ng/',
         year: 2023,
         description:
             'Resume Roaster is a web application designed to provide tailored resume feedback and professional writing services. Built with Next.js, PostgreSQL, Prisma, and Tailwind CSS, it integrates GPT-4 for AI-powered recommendations. The platform also includes peer-to-peer reviews with a points-based system, fostering a collaborative and engaging experience. Targeting freshers, experienced professionals, and programmers, it helps optimize resumes for job-specific success.',
@@ -227,23 +222,23 @@ export const PROJECTS: IProject[] = [
         - Implemented complex SQL queries, including one to identify the top two resumes based on user points.`,
     },
     {
-        title: 'Real Estate',
+        title: 'Oversabi',
         slug: 'property-pro',
         techStack: [
             'React.js',
             'Redux',
             'Tailwind CSS',
             'React i18n',
-            'Framer Motion',
+            'GPT-04',
         ],
-        thumbnail: '/projects/thumbnail/property-pro.jpg',
+        thumbnail: '/projects/thumbnail/oversabi.png',
         longThumbnail: '/projects/long/property-pro.jpg',
         images: [
             '/projects/images/property-pro-1.png',
             '/projects/images/property-pro-2.png',
             '/projects/images/property-pro-3.png',
         ],
-        liveUrl: 'https://demo.propertypro.siphertech.com/',
+        liveUrl: 'https://buzz-six-lime.vercel.app/',
         year: 2023,
         description:
             'PropertyPro is a real estate management platform offering users a seamless experience to explore, manage, and view property listings. The application emphasizes accessibility and responsive design, ensuring a smooth interface across devices.',
@@ -252,43 +247,6 @@ export const PROJECTS: IProject[] = [
         - Integrated dynamic state management for efficient handling of property data.<br/>
         - Implemented multi-language support with React i18n to cater to diverse audiences.<br/>
         - Enhanced user interaction with animations and transitions using Framer Motion.`,
-    },
-    {
-        title: 'Consulting Finance',
-        slug: 'crenotive',
-        techStack: ['HTML', 'CSS & SCSS', 'Javascript', 'Bootstrap'],
-        thumbnail: '/projects/thumbnail/consulting-finance.jpg',
-        longThumbnail: '/projects/long/consulting-finance.jpg',
-        images: [
-            '/projects/images/consulting-finance-1.png',
-            '/projects/images/consulting-finance-2.png',
-            '/projects/images/consulting-finance-3.png',
-        ],
-        sourceCode: 'https://github.com/Tajmirul/crenotive',
-        liveUrl: 'https://crenotive.netlify.app/',
-        year: 2023,
-        description:
-            'I developed Crenotive, a portfolio website using Html, SASS, and jQuery to showcase services and expertise. The design focuses on responsive user experience and effective presentation of professional achievements.',
-        role: ``,
-    },
-    {
-        title: 'devLinks',
-        slug: 'devLinks',
-        techStack: ['Next.js', 'Formik', 'Drag & Drop', 'Tailwind CSS'],
-        thumbnail: '/projects/thumbnail/devLinks.jpg',
-        longThumbnail: '/projects/long/devLinks.jpg',
-        images: [
-            '/projects/images/devLinks-1.png',
-            '/projects/images/devLinks-2.png',
-            '/projects/images/devLinks-3.png',
-        ],
-        sourceCode: 'https://github.com/Tajmirul/devsLink',
-        liveUrl: 'https://devlinks-demo.vercel.app/auth/signin',
-        year: 2023,
-        description: `One of the most challenging projects in Frontend Mentor.<br/><br/>
-
-            I developed a LinkSharing App as part of the Frontend Mentor challenge, utilizing React, Redux, and Tailwind CSS to create a responsive and feature-rich platform. The app allows users to share, save, and explore links, with a focus on intuitive design and smooth navigation. Advanced state management ensures efficient data handling for user interactions.`,
-        role: ``,
     },
 ];
 
