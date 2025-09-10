@@ -1,14 +1,14 @@
 import { GENERAL_INFO } from '@/lib/data';
-import { GitFork, Star } from 'lucide-react';
+import { BookMarked, UserRoundPlus } from 'lucide-react';
 
-interface RepoStats {
-    stargazers_count: number;
-    forks_count: number;
+interface ProfileStat {
+    followers: number;
+    public_repos: number;
 }
 
 const Footer = async () => {
     const repoStats = await fetch(
-        'https://api.github.com/repos/tajmirul/portfolio-2.0',
+        'https://api.github.com/users/iamnathan-dev',
         {
             next: {
                 revalidate: 60 * 60, // 1 hour
@@ -16,8 +16,7 @@ const Footer = async () => {
         },
     );
 
-    const { stargazers_count, forks_count } =
-        (await repoStats.json()) as RepoStats;
+    const { followers, public_repos } = (await repoStats.json()) as ProfileStat;
 
     return (
         <footer className="text-center pb-5" id="contact">
@@ -32,17 +31,17 @@ const Footer = async () => {
 
                 <div className="">
                     <a
-                        href="https://github.com/Tajmirul/portfolio-2.0"
+                        href="https://github.com/iamnathan-dev"
                         target="_blank"
                         className="leading-none text-muted-foreground hover:underline hover:text-white"
                     >
-                        Design & built by Tajmirul Islam
+                        Design & built by Nathaniel Joseph
                         <div className="flex items-center justify-center gap-5 pt-1">
                             <span className="flex items-center gap-2">
-                                <Star size={18} /> {stargazers_count}
+                                <UserRoundPlus size={18} /> {public_repos}
                             </span>
                             <span className="flex items-center gap-2">
-                                <GitFork size={18} /> {forks_count}
+                                <BookMarked size={18} /> {followers}
                             </span>
                         </div>
                     </a>

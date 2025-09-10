@@ -1,20 +1,20 @@
 import { IProject } from '@/types';
 
 export const GENERAL_INFO = {
-    email: 'tasmirolislam@gmail.com',
+    email: 'nathancodes05@gmail.com',
 
     emailSubject: "Let's collaborate on a project",
-    emailBody: 'Hi Tajmirul, I am reaching out to you because...',
+    emailBody: 'Hi Nathan, I am reaching out to you because...',
 
     oldPortfolio: 'https://www.legacy.me.toinfinite.dev',
-    upworkProfile: 'https://www.upwork.com/freelancers/tajmirul',
+    upworkProfile:
+        'https://www.upwork.com/freelancers/~01eef3ccc7348ee8f4?mp_source=share',
 };
 
 export const SOCIAL_LINKS = [
-    { name: 'github', url: 'https://github.com/Tajmirul' },
-    { name: 'linkedin', url: 'https://www.linkedin.com/in/tajmirul' },
-    { name: 'facebook', url: 'https://www.facebook.com/tajmirul.2000' },
-    { name: 'Old Version', url: GENERAL_INFO.oldPortfolio },
+    { name: 'github', url: 'https://github.com/iamnathan-dev' },
+    { name: 'linkedin', url: 'https://www.linkedin.com/in/iamnathan-dev' },
+    { name: 'twitter', url: 'https://x.com/iamnathan_dev' },
 ];
 
 export const MY_STACK = {
@@ -87,10 +87,6 @@ export const MY_STACK = {
             name: 'MongoDB',
             icon: '/logo/mongodb.svg',
         },
-        {
-            name: 'Prisma',
-            icon: '/logo/prisma.png',
-        },
     ],
     tools: [
         {
@@ -98,12 +94,24 @@ export const MY_STACK = {
             icon: '/logo/git.png',
         },
         {
-            name: 'Docker',
-            icon: '/logo/docker.svg',
+            name: 'GitHub',
+            icon: '/logo/github.png',
+        },
+        // {
+        //     name: 'Xcode',
+        //     icon: '/logo/xcode.png',
+        // },
+        // {
+        //     name: 'Postman',
+        //     icon: '/logo/postman.png',
+        // },
+        {
+            name: 'Vs Code',
+            icon: '/logo/vscode.png',
         },
         {
-            name: 'AWS',
-            icon: '/logo/aws.png',
+            name: 'Docker',
+            icon: '/logo/docker.svg',
         },
     ],
 };
@@ -286,23 +294,33 @@ export const PROJECTS: IProject[] = [
 
 export const MY_EXPERIENCE = [
     {
-        title: 'Software Engineer (Frontend)',
-        company: 'Strativ AB',
-        duration: 'Dec 2024 - Present',
+        title: 'Software Engineer (Mobile)',
+        company: '9lives',
+        duration: 'Aug 2025 - Present',
+    },
+    {
+        title: 'Frontend Developer - (Seasonal)',
+        company: 'HNG Tech',
+        duration: 'Jul 2024 - Present',
+    },
+    {
+        title: 'Frontend Engineer - (Contract)',
+        company: 'ExamCrush',
+        duration: 'Jul 2025 - Aug 2025',
     },
     {
         title: 'Frontend Developer',
-        company: 'Epikcoders',
-        duration: 'Oct 2023 - Nov 2024',
+        company: 'BrandDrive',
+        duration: 'Oct 2024 - Mar 2025',
     },
     {
-        title: 'Frontend Engineer',
-        company: 'Anchorblock Technology',
-        duration: 'Oct 2022 - Sep 2023',
+        title: 'Frontend Developer',
+        company: 'Grit Inforemd Media',
+        duration: 'May 2022 - Jul 2023',
     },
     {
-        title: 'Frontend Developer (Part-time)',
-        company: 'Branex IT',
-        duration: 'Jan 2022 - Oct 2022',
+        title: 'Frontend Developer - (Intern)',
+        company: 'GPRS Innovation Hub',
+        duration: 'Jun 2021 - Apr 2022',
     },
 ];
