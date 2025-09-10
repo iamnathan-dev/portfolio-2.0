@@ -58,7 +58,7 @@ const Banner = () => {
                         as="link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        href={GENERAL_INFO.upworkProfile}
+                        href={GENERAL_INFO.linkedinProfile}
                         variant="primary"
                         className="mt-9 banner-button slide-up-and-fade"
                     >
