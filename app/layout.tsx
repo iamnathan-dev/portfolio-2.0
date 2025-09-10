@@ -29,8 +29,22 @@ const robotoFlex = Roboto_Flex({
 });
 
 export const metadata: Metadata = {
-    title: 'Portfolio - Tajmirul Islam',
-    description: 'Personal portfolio of Tajmirul Islam',
+    title: 'Portfolio - Nathaniel Joseph',
+    description: 'Personal portfolio of Nathaniel Joseph',
+    openGraph: {
+        title: 'Portfolio - Nathaniel Joseph',
+        description: 'Personal portfolio of Nathaniel Joseph',
+        images: [
+            {
+                url: '/images/og-image.jpeg', // Path to the image in the /public folder
+                width: 1200,
+                height: 630,
+                alt: 'Portfolio - Nathaniel Joseph  ',
+            },
+        ],
+        url: 'https://nameisblank.vercel.app', // Your website URL
+        type: 'website',
+    },
 };
 
 export default function RootLayout({
