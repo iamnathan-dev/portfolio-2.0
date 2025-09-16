@@ -253,18 +253,18 @@ export const PROJECTS: IProject[] = [
 
 export const MY_EXPERIENCE = [
     {
-        title: 'Software Engineer (Mobile)',
-        company: '9lives',
+        title: 'Software Engineer',
+        company: '9lives - Contract',
         duration: 'Aug 2025 - Present',
     },
     {
-        title: 'Frontend Developer - (Seasonal)',
-        company: 'HNG Tech',
+        title: 'Software Developer',
+        company: 'HNG Tech - Seasonal',
         duration: 'Jul 2024 - Present',
     },
     {
-        title: 'Frontend Engineer - (Contract)',
-        company: 'ExamCrush',
+        title: 'Frontend Engineer',
+        company: 'ExamCrush - Contract',
         duration: 'Jul 2025 - Aug 2025',
     },
     {
@@ -278,8 +278,8 @@ export const MY_EXPERIENCE = [
         duration: 'May 2022 - Jul 2023',
     },
     {
-        title: 'Frontend Developer - (Intern)',
-        company: 'GPRS Innovation Hub',
+        title: 'Frontend Developer',
+        company: 'GPRS Innovation Hub - Internship',
         duration: 'Jun 2021 - Apr 2022',
     },
 ];
