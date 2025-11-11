@@ -176,24 +176,16 @@ export const PROJECTS: IProject[] = [
         ],
     },
     {
-        title: 'BrandDrive',
-        slug: 'brandDrive',
-        techStack: [
-            'React',
-            'Redux',
-            'Ionic',
-            'Tailwind CSS',
-            'React-hook-form',
-            'debouncing',
-            'Api Integration',
-        ],
-        thumbnail: '/projects/thumbnail/branddrive.png',
-        longThumbnail: '/projects/long/brand-drive.jpg',
+        title: 'Resume Roaster',
+        slug: 'resume-roaster',
+        techStack: ['Next.js', 'PostgreSQL', 'GPT-4', 'Tailwind CSS'],
+        thumbnail: '/projects/thumbnail/resume-roaster.jpg',
+        longThumbnail: '/projects/long/resume-roaster.jpg',
         images: [
-            '/projects/images/brand-drive-1.png',
-            '/projects/images/brand-drive-2.png',
+            '/projects/images/resume-roaster-1.png',
+            '/projects/images/resume-roaster-2.png',
         ],
-        liveUrl: 'https://branddrive.co/',
+        liveUrl: 'https://resume-roaster.vercel.app/',
         year: 2024,
         description: `BrandDrive is a seamless bookkeeping, smart payments, AI insights, and e-commerce solutions—everything your business needs in one platform.`,
         role: `As the frontend developer in a team of ten, I: <br/>
@@ -203,18 +195,18 @@ export const PROJECTS: IProject[] = [
         - Delivered a responsive, user-friendly interface in collaboration with the UI/UX designer.`,
     },
     {
-        title: 'Unique Kids House',
-        slug: 'unique-kids-house',
-        techStack: ['Next.js', 'Tailwind CSS', 'Vercel'],
-        thumbnail: '/projects/thumbnail/unique-kids-house.png',
-        longThumbnail: '/projects/long/unique-kids-house.jpg',
+        title: 'EpikCart',
+        slug: 'epikcart',
+        techStack: ['React.js', 'Tailwind CSS', 'Redux', 'React Hook Form'],
+        thumbnail: '/projects/thumbnail/epikcart.jpg',
+        longThumbnail: '/projects/long/epikcart.jpg',
         images: [
-            '/projects/images/resume-roaster-1.png',
-            '/projects/images/resume-roaster-2.png',
-            '/projects/images/resume-roaster-3.png',
+            '/projects/images/epikcart-1.png',
+            '/projects/images/epikcart-2.png',
+            '/projects/images/epikcart-3.png',
         ],
-        liveUrl: 'https://www.unique-kids-house.com.ng/',
-        year: 2023,
+        liveUrl: 'https://demo.epikcart.siphertech.com/',
+        year: 2025,
         description:
             'Resume Roaster is a web application designed to provide tailored resume feedback and professional writing services. Built with Next.js, PostgreSQL, Prisma, and Tailwind CSS, it integrates GPT-4 for AI-powered recommendations. The platform also includes peer-to-peer reviews with a points-based system, fostering a collaborative and engaging experience. Targeting freshers, experienced professionals, and programmers, it helps optimize resumes for job-specific success.',
         role: `As the sole developer and business owner, I:<br/>
@@ -225,13 +217,7 @@ export const PROJECTS: IProject[] = [
     {
         title: 'Oversabi',
         slug: 'property-pro',
-        techStack: [
-            'React.js',
-            'Redux',
-            'Tailwind CSS',
-            'React i18n',
-            'GPT-04',
-        ],
+        techStack: ['Next.js', 'Tailwind CSS', 'GPT-4', 'React i18n'],
         thumbnail: '/projects/thumbnail/oversabi.png',
         longThumbnail: '/projects/long/property-pro.jpg',
         images: [
@@ -254,17 +240,17 @@ export const PROJECTS: IProject[] = [
 export const MY_EXPERIENCE = [
     {
         title: 'Software Engineer',
-        company: '9lives - Contract',
+        company: '9lives',
         duration: 'Aug 2025 - Present',
     },
     {
         title: 'Software Developer',
-        company: 'HNG Tech - Seasonal',
-        duration: 'Jul 2024 - Present',
+        company: 'HNG Tech',
+        duration: 'Jul 2024 - Aug 2025',
     },
     {
         title: 'Frontend Engineer',
-        company: 'ExamCrush - Contract',
+        company: 'ExamCrush',
         duration: 'Jul 2025 - Aug 2025',
     },
     {
@@ -279,7 +265,7 @@ export const MY_EXPERIENCE = [
     },
     {
         title: 'Frontend Developer',
-        company: 'GPRS Innovation Hub - Internship',
+        company: 'GPRS Innovation Hub',
         duration: 'Jun 2021 - Apr 2022',
     },
 ];
