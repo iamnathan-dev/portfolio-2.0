@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         description: 'Personal portfolio of Nathaniel Joseph',
         images: [
             {
-                url: '/images/og-image.jpeg', // Path to the image in the /public folder
+                url: '/images/og-image.png', // Path to the image in the /public folder
                 width: 1200,
                 height: 630,
                 alt: 'Portfolio - Nathaniel Joseph  ',
