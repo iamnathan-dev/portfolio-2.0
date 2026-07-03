@@ -1,43 +1,52 @@
 'use client';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { useRef } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 
-gsap.registerPlugin(useGSAP);
+interface Particle {
+    left: number;
+    size: number;
+    duration: number;
+    delay: number;
+    opacity: number;
+}
+
+const PARTICLE_COUNT = 45;
 
 const ParticleBackground = () => {
-    const particlesRef = useRef<HTMLDivElement[]>([]);
+    const [particles, setParticles] = useState<Particle[] | null>(null);
 
-    useGSAP(() => {
-        particlesRef.current.forEach((particle) => {
-            gsap.set(particle, {
-                width: Math.random() * 3 + 1,
-                height: Math.random() * 3 + 1,
-                opacity: Math.random(),
-                left: Math.random() * window.innerWidth,
-                top: Math.random() * (window.innerHeight + 1),
-            });
-
-            gsap.to(particle, {
-                y: window.innerHeight,
+    useEffect(() => {
+        setParticles(
+            Array.from({ length: PARTICLE_COUNT }, () => ({
+                left: Math.random() * 100,
+                size: Math.random() * 2 + 1,
                 duration: Math.random() * 10 + 10,
-                opacity: 0,
-                repeat: -1,
-                ease: 'none',
-                // yoyo: true,
-            });
-        });
+                delay: Math.random() * -20,
+                opacity: Math.random() * 0.6 + 0.2,
+            })),
+        );
     }, []);
 
+    if (!particles) return null;
+
     return (
-        <div className="fixed inset-0 z-0 pointer-events-none">
-            {[...Array(100)].map((_, i) => (
-                <div
+        <div
+            className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+            aria-hidden
+        >
+            {particles.map((p, i) => (
+                <span
                     key={i}
-                    ref={(el) => {
-                        particlesRef.current.push(el!);
-                    }}
-                    className="absolute rounded-full bg-white"
+                    className="absolute top-0 rounded-full bg-foreground animate-particle-fall"
+                    style={
+                        {
+                            left: `${p.left}%`,
+                            width: p.size,
+                            height: p.size,
+                            animationDuration: `${p.duration}s`,
+                            animationDelay: `${p.delay}s`,
+                            '--particle-opacity': p.opacity,
+                        } as CSSProperties
+                    }
                 />
             ))}
         </div>

@@ -63,9 +63,10 @@ export default {
             fontFamily: {
                 anton: ['var(--font-anton)'],
                 'roboto-flex': ['var(--font-roboto-flex)'],
+                mono: ['var(--font-mono)', 'monospace'],
             },
             padding: {
-                section: '250px',
+                section: 'clamp(90px, 14vw, 160px)',
             },
             container: {
                 center: true,

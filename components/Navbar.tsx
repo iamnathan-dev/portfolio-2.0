@@ -3,14 +3,9 @@ import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { MoveUpRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
-
-const COLORS = [
-    'bg-yellow-500 text-black',
-    'bg-blue-500 text-white',
-    'bg-teal-500 text-black',
-    'bg-indigo-500 text-white',
-];
+import ThemeToggle from './ThemeToggle';
 
 const MENU_LINKS = [
     {
@@ -38,31 +33,45 @@ const Navbar = () => {
     return (
         <>
             <div className="sticky top-0 z-[4]">
-                <button
-                    className={cn(
-                        'group size-12 absolute top-5 right-5 md:right-10 z-[2]',
-                    )}
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                <Link
+                    href="/"
+                    className="absolute top-5 left-5 md:left-10 z-[2] font-mono text-sm tracking-wider"
                 >
-                    <span
-                        className={cn(
-                            'inline-block w-3/5 h-0.5 bg-foreground rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 -translate-y-[5px] ',
-                            {
-                                'rotate-45 -translate-y-1/2': isMenuOpen,
-                                'md:group-hover:rotate-12': !isMenuOpen,
-                            },
-                        )}
-                    ></span>
-                    <span
-                        className={cn(
-                            'inline-block w-3/5 h-0.5 bg-foreground rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 translate-y-[5px] ',
-                            {
-                                '-rotate-45 -translate-y-1/2': isMenuOpen,
-                                'md:group-hover:-rotate-12': !isMenuOpen,
-                            },
-                        )}
-                    ></span>
-                </button>
+                    N<span className="text-primary">.</span>J
+                </Link>
+
+                <div className="absolute top-5 right-20 md:right-28 z-[2]">
+                    <ThemeToggle />
+                </div>
+
+                <div className="absolute top-5 right-5 md:right-10 z-[2] flex items-center gap-2.5">
+                    <button
+                        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                        className="group relative size-11 rounded border border-border transition-colors hover:border-primary/60"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
+                        <span className="pointer-events-none absolute -top-px -left-px h-2.5 w-2.5 border-l border-t border-primary/70" />
+                        <span className="pointer-events-none absolute -bottom-px -right-px h-2.5 w-2.5 border-b border-r border-primary/70" />
+                        <span
+                            className={cn(
+                                'inline-block w-1/2 h-0.5 bg-primary rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 -translate-y-[5px] ',
+                                {
+                                    'rotate-45 -translate-y-1/2': isMenuOpen,
+                                    'md:group-hover:rotate-12': !isMenuOpen,
+                                },
+                            )}
+                        ></span>
+                        <span
+                            className={cn(
+                                'inline-block w-1/2 h-0.5 bg-primary rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 translate-y-[5px] ',
+                                {
+                                    '-rotate-45 -translate-y-1/2': isMenuOpen,
+                                    'md:group-hover:-rotate-12': !isMenuOpen,
+                                },
+                            )}
+                        ></span>
+                    </button>
+                </div>
             </div>
 
             <div
@@ -77,7 +86,7 @@ const Navbar = () => {
 
             <div
                 className={cn(
-                    'fixed top-0 right-0 h-[100dvh] w-[500px] max-w-[calc(100vw-3rem)] transform translate-x-full transition-transform duration-700 z-[3] overflow-hidden gap-y-14',
+                    'fixed top-0 right-0 h-[100dvh] w-[720px] max-w-[calc(100vw-3rem)] transform translate-x-full transition-transform duration-700 z-[3] overflow-hidden gap-y-14 border-l border-primary/20',
                     'flex flex-col lg:justify-center py-10',
                     { 'translate-x-0': isMenuOpen },
                 )}
@@ -91,20 +100,39 @@ const Navbar = () => {
                     )}
                 ></div>
 
-                <div className="grow flex md:items-center w-full max-w-[300px] mx-8 sm:mx-auto">
-                    <div className="flex gap-10 lg:justify-between max-lg:flex-col w-full">
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 opacity-[0.4] bg-[linear-gradient(hsl(var(--foreground)/0.05)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:32px_32px]"
+                />
+
+                <span className="pointer-events-none absolute top-6 left-6 h-4 w-4 border-l-2 border-t-2 border-primary/50" />
+                <span className="pointer-events-none absolute bottom-6 left-6 h-4 w-4 border-l-2 border-b-2 border-primary/50" />
+
+                <div className="absolute top-0 inset-x-0 flex items-center justify-between border-b border-primary/20 bg-primary/[0.03] px-6 py-4">
+                    <div className="flex items-center gap-1.5">
+                        <span className="size-2 rounded-full bg-[#ff5f56]" />
+                        <span className="size-2 rounded-full bg-[#ffbd2e]" />
+                        <span className="size-2 rounded-full bg-[#27c93f]" />
+                    </div>
+                    <span className="font-mono text-xs text-primary tracking-wide">
+                        menu.ts
+                    </span>
+                </div>
+
+                <div className="grow flex md:items-center w-full max-w-[420px] mx-8 sm:mx-auto">
+                    <div className="flex gap-14 lg:justify-between max-lg:flex-col w-full">
                         <div className="max-lg:order-2">
-                            <p className="text-muted-foreground mb-5 md:mb-8">
-                                SOCIAL
+                            <p className="font-mono text-sm text-muted-foreground mb-6 md:mb-9 tracking-widest">
+                                {'// SOCIAL'}
                             </p>
-                            <ul className="space-y-3">
+                            <ul className="space-y-4">
                                 {SOCIAL_LINKS.map((link) => (
                                     <li key={link.name}>
                                         <a
                                             href={link.url}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="text-lg capitalize hover:underline"
+                                            className="text-xl capitalize transition-colors hover:text-primary hover:underline"
                                         >
                                             {link.name}
                                         </a>
@@ -113,10 +141,10 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="">
-                            <p className="text-muted-foreground mb-5 md:mb-8">
-                                MENU
+                            <p className="font-mono text-sm text-muted-foreground mb-6 md:mb-9 tracking-widest">
+                                {'// MENU'}
                             </p>
-                            <ul className="space-y-3">
+                            <ul className="space-y-4">
                                 {MENU_LINKS.map((link, idx) => (
                                     <li key={link.name}>
                                         <button
@@ -124,20 +152,20 @@ const Navbar = () => {
                                                 router.push(link.url);
                                                 setIsMenuOpen(false);
                                             }}
-                                            className="group text-xl flex items-center gap-3"
+                                            className="group text-2xl sm:text-3xl font-anton flex items-center gap-4"
                                         >
-                                            <span
-                                                className={cn(
-                                                    'size-3.5 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-[200%] transition-all',
-                                                    COLORS[idx],
-                                                )}
-                                            >
+                                            <span className="flex size-4 items-center justify-center rounded-full bg-primary/15 border border-primary/40 transition-all group-hover:scale-[180%] group-hover:bg-primary">
                                                 <MoveUpRight
-                                                    size={8}
-                                                    className="scale-0 group-hover:scale-100 transition-all"
+                                                    size={9}
+                                                    className="scale-0 text-black group-hover:scale-100 transition-all"
                                                 />
                                             </span>
                                             {link.name}
+                                            <span className="font-mono text-xs text-primary/60 transition-colors group-hover:text-primary">
+                                                {(idx + 1)
+                                                    .toString()
+                                                    .padStart(2, '0')}
+                                            </span>
                                         </button>
                                     </li>
                                 ))}
@@ -146,9 +174,14 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className="w-full max-w-[300px] mx-8 sm:mx-auto">
-                    <p className="text-muted-foreground mb-4">GET IN TOUCH</p>
-                    <a href={`mailto:${GENERAL_INFO.email}`}>
+                <div className="w-full max-w-[420px] mx-8 sm:mx-auto">
+                    <p className="font-mono text-sm text-muted-foreground mb-4 tracking-widest">
+                        {'// GET IN TOUCH'}
+                    </p>
+                    <a
+                        href={`mailto:${GENERAL_INFO.email}`}
+                        className="text-lg transition-colors hover:text-primary hover:underline"
+                    >
                         {GENERAL_INFO.email}
                     </a>
                 </div>

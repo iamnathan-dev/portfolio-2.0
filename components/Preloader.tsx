@@ -1,66 +1,109 @@
 'use client';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 gsap.registerPlugin(useGSAP);
 
 const Preloader = () => {
     const preloaderRef = useRef<HTMLDivElement>(null);
+    const percentRef = useRef<HTMLSpanElement>(null);
+    const barRef = useRef<HTMLDivElement>(null);
 
     useGSAP(
         () => {
+            const counter = { value: 0 };
+
             const tl = gsap.timeline({
-                defaults: {
-                    ease: 'power1.inOut',
-                },
+                defaults: { ease: 'power1.inOut' },
             });
 
-            tl.to('.name-text span', {
-                y: 0,
-                stagger: 0.05,
+            tl.from('.preloader-line', {
+                autoAlpha: 0,
+                y: 10,
+                stagger: 0.12,
+                duration: 0.3,
+            });
+
+            tl.to(
+                counter,
+                {
+                    value: 100,
+                    duration: 1.2,
+                    ease: 'power2.inOut',
+                    onUpdate: () => {
+                        const rounded = Math.round(counter.value);
+                        if (percentRef.current) {
+                            percentRef.current.textContent = `${rounded}%`;
+                        }
+                        if (barRef.current) {
+                            barRef.current.style.width = `${rounded}%`;
+                        }
+                    },
+                },
+                '+=0.1',
+            );
+
+            tl.to('.preloader-ready', {
+                autoAlpha: 1,
                 duration: 0.2,
             });
 
             tl.to('.preloader-item', {
-                delay: 1,
                 y: '100%',
                 duration: 0.5,
-                stagger: 0.1,
+                stagger: 0.08,
+                delay: 0.3,
             })
-                .to('.name-text span', { autoAlpha: 0 }, '<0.5')
-                .to(
-                    preloaderRef.current,
-                    {
-                        autoAlpha: 0,
-                    },
-                    '<1',
-                );
+                .to('.preloader-content', { autoAlpha: 0 }, '<0.1')
+                .to(preloaderRef.current, { autoAlpha: 0 }, '<0.3');
         },
         { scope: preloaderRef },
     );
 
     return (
         <div className="fixed inset-0 z-[6] flex" ref={preloaderRef}>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
-            <div className="preloader-item h-full w-[10%] bg-black"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-background"></div>
 
-            <p className="name-text flex text-[20vw] lg:text-[200px] font-anton text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-none overflow-hidden">
-                <span className="inline-block translate-y-full">N</span>
-                <span className="inline-block translate-y-full">A</span>
-                <span className="inline-block translate-y-full">T</span>
-                <span className="inline-block translate-y-full">H</span>
-                <span className="inline-block translate-y-full">A</span>
-                <span className="inline-block translate-y-full">N</span>
-            </p>
+            <div className="preloader-content absolute inset-0 z-[1] flex flex-col items-center justify-center font-mono">
+                <p className="preloader-line text-xs sm:text-sm text-muted-foreground mb-4 tracking-wide">
+                    <span className="text-primary">$</span> booting{' '}
+                    <span className="text-foreground">nathaniel.dev</span>
+                    <span className="animate-pulse text-primary">_</span>
+                </p>
+
+                <p className="preloader-line text-5xl sm:text-7xl font-anton leading-none mb-8">
+                    N<span className="text-primary">.</span>J
+                </p>
+
+                <div className="preloader-line flex items-center gap-3">
+                    <div className="h-1 w-[160px] sm:w-[220px] rounded-full bg-border overflow-hidden">
+                        <div
+                            ref={barRef}
+                            className="h-full w-0 rounded-full bg-primary"
+                        />
+                    </div>
+                    <span
+                        ref={percentRef}
+                        className="w-10 text-xs text-primary tabular-nums"
+                    >
+                        0%
+                    </span>
+                </div>
+
+                <p className="preloader-ready mt-4 text-xs text-primary tracking-[0.3em] opacity-0">
+                    SYSTEM READY
+                </p>
+            </div>
         </div>
     );
 };

@@ -32,6 +32,31 @@
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
     }
+
+    html.light {
+        --background: 0 0% 100%;
+        --background-light: 0 0% 93%;
+        --foreground: 0 0% 9%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 9%;
+
+        --primary: 140 65% 32%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 193 80% 28%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 0 0% 94%;
+        --muted-foreground: 0 0% 40%;
+        --accent: 0 0% 94%;
+        --accent-foreground: 0 0% 9%;
+        --destructive: 0 70% 42%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 0 0% 88%;
+        --input: 0 0% 94%;
+        --ring: 0 0% 20%;
+    }
 }
 
 @layer base {
@@ -44,6 +69,11 @@
     body {
         @apply bg-background text-foreground font-roboto-flex;
     }
+    a:focus-visible,
+    button:focus-visible,
+    [tabindex]:focus-visible {
+        @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background rounded-sm;
+    }
 }
 
 @layer components {
@@ -55,3 +85,50 @@
         @apply pl-5 mt-2 list-disc;
     }
 }
+
+@layer utilities {
+    .animate-marquee {
+        animation: marquee 32s linear infinite;
+    }
+
+    .animate-particle-fall {
+        animation-name: particle-fall;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        will-change: transform, opacity;
+    }
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes particle-fall {
+    0% {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+    10% {
+        opacity: var(--particle-opacity, 0.5);
+    }
+    90% {
+        opacity: var(--particle-opacity, 0.5);
+    }
+    100% {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-particle-fall {
+        animation: none;
+    }
+}
+

@@ -1,12 +1,14 @@
 'use client';
 import parse from 'html-react-parser';
 import ArrowAnimation from '@/components/ArrowAnimation';
+import Chip from '@/components/Chip';
 import TransitionLink from '@/components/TransitionLink';
 import { IProject } from '@/types';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import Image from 'next/image';
 import { useRef } from 'react';
 
 interface Props {
@@ -66,19 +68,22 @@ const ProjectDetails = ({ project }: Props) => {
     useGSAP(
         () => {
             gsap.utils
-                .toArray<HTMLDivElement>('#images > div')
-                .forEach((imageDiv, i) => {
-                    gsap.to(imageDiv, {
-                        backgroundPosition: `center 0%`,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: imageDiv,
-                            start: () => (i ? 'top bottom' : 'top 50%'),
-                            end: 'bottom top',
-                            scrub: true,
-                            // invalidateOnRefresh: true, // to make it responsive
+                .toArray<HTMLDivElement>('#images .parallax-image')
+                .forEach((img, i) => {
+                    gsap.fromTo(
+                        img,
+                        { yPercent: -8 },
+                        {
+                            yPercent: 8,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: img.parentElement,
+                                start: () => (i ? 'top bottom' : 'top 50%'),
+                                end: 'bottom top',
+                                scrub: true,
+                            },
                         },
-                    });
+                    );
                 });
         },
         { scope: containerRef },
@@ -90,7 +95,7 @@ const ProjectDetails = ({ project }: Props) => {
                 <TransitionLink
                     back
                     href="/"
-                    className="mb-16 inline-flex gap-2 items-center group h-12"
+                    className="mb-16 inline-flex gap-2 items-center group h-12 font-mono text-sm tracking-wide"
                 >
                     <ArrowLeft className="group-hover:-translate-x-1 group-hover:text-primary transition-all duration-300" />
                     Back
@@ -101,22 +106,23 @@ const ProjectDetails = ({ project }: Props) => {
                     id="info"
                 >
                     <div className="relative w-full">
-                        <div className="flex items-start gap-6 mx-auto mb-10 max-w-[635px]">
-                            <h1 className="fade-in-later opacity-0 text-4xl md:text-[60px] leading-none font-anton overflow-hidden">
+                        <div className="flex items-start gap-4 mx-auto mb-10 max-w-[635px]">
+                            <h1 className="fade-in-later opacity-0 text-3xl md:text-4xl lg:text-5xl leading-none font-anton overflow-hidden">
                                 <span className="inline-block">
                                     {project.title}
                                 </span>
                             </h1>
 
-                            <div className="fade-in-later opacity-0 flex gap-2">
+                            <div className="fade-in-later opacity-0 flex gap-2 mt-1">
                                 {project.sourceCode && (
                                     <a
                                         href={project.sourceCode}
                                         target="_blank"
                                         rel="noreferrer noopener"
+                                        aria-label="View source code"
                                         className="hover:text-primary"
                                     >
-                                        <Github size={30} />
+                                        <Github size={24} />
                                     </a>
                                 )}
                                 {project.liveUrl && (
@@ -124,47 +130,50 @@ const ProjectDetails = ({ project }: Props) => {
                                         href={project.liveUrl}
                                         target="_blank"
                                         rel="noreferrer noopener"
+                                        aria-label="View live project"
                                         className="hover:text-primary"
                                     >
-                                        <ExternalLink size={30} />
+                                        <ExternalLink size={24} />
                                     </a>
                                 )}
                             </div>
                         </div>
 
-                        <div className="max-w-[635px] space-y-7 pb-20 mx-auto">
+                        <div className="max-w-[635px] space-y-6 pb-20 mx-auto">
                             <div className="fade-in-later">
-                                <p className="text-muted-foreground font-anton mb-3">
+                                <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
                                     Year
                                 </p>
 
-                                <div className="text-lg">{project.year}</div>
+                                <div className="text-base">{project.year}</div>
                             </div>
                             <div className="fade-in-later">
-                                <p className="text-muted-foreground font-anton mb-3">
+                                <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
                                     Tech & Technique
                                 </p>
 
-                                <div className="text-lg">
-                                    {project.techStack.join(', ')}
+                                <div className="flex flex-wrap gap-2">
+                                    {project.techStack.map((tech) => (
+                                        <Chip key={tech}>{tech}</Chip>
+                                    ))}
                                 </div>
                             </div>
                             <div className="fade-in-later">
-                                <p className="text-muted-foreground font-anton mb-3">
+                                <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
                                     Description
                                 </p>
 
-                                <div className="text-lg prose-xl markdown-text">
+                                <div className="text-base prose-xl markdown-text">
                                     {parse(project.description)}
                                 </div>
                             </div>
                             {project.role && (
                                 <div className="fade-in-later">
-                                    <p className="text-muted-foreground font-anton mb-3">
+                                    <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
                                         My Role
                                     </p>
 
-                                    <div className="text-lg">
+                                    <div className="text-base">
                                         {parse(project.role)}
                                     </div>
                                 </div>
@@ -179,23 +188,31 @@ const ProjectDetails = ({ project }: Props) => {
                     className="fade-in-later relative flex flex-col gap-2 max-w-[800px] mx-auto"
                     id="images"
                 >
-                    {project.images.map((image) => (
+                    {project.images.map((image, idx) => (
                         <div
                             key={image}
-                            className="group relative w-full aspect-[750/400] bg-background-light"
-                            style={{
-                                backgroundImage: `url(${image})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center 50%',
-                                backgroundRepeat: 'no-repeat',
-                            }}
+                            className="group relative w-full aspect-[750/400] bg-background-light rounded-md overflow-hidden border border-border/70"
                         >
+                            <Image
+                                src={image}
+                                alt={`${project.title} screenshot ${idx + 1}`}
+                                fill
+                                sizes="(max-width: 800px) 100vw, 800px"
+                                className="parallax-image scale-110 object-cover"
+                                loading="lazy"
+                            />
+                            <span className="pointer-events-none absolute -top-px -left-px h-4 w-4 border-l-2 border-t-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
+                            <span className="pointer-events-none absolute -top-px -right-px h-4 w-4 border-r-2 border-t-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
+                            <span className="pointer-events-none absolute -bottom-px -left-px h-4 w-4 border-b-2 border-l-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
+                            <span className="pointer-events-none absolute -bottom-px -right-px h-4 w-4 border-b-2 border-r-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
                             <a
                                 href={image}
                                 target="_blank"
-                                className="absolute top-4 right-4 bg-background/70 text-foreground size-12 inline-flex justify-center items-center transition-all opacity-0 hover:bg-primary hover:text-primary-foreground group-hover:opacity-100"
+                                rel="noreferrer noopener"
+                                aria-label={`Open ${project.title} screenshot ${idx + 1} in a new tab`}
+                                className="absolute top-4 right-4 bg-background/70 text-foreground size-11 rounded-md inline-flex justify-center items-center transition-all opacity-0 hover:bg-primary hover:text-primary-foreground group-hover:opacity-100 focus-visible:opacity-100"
                             >
-                                <ExternalLink />
+                                <ExternalLink size={20} />
                             </a>
                         </div>
                     ))}

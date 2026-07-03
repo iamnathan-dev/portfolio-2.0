@@ -50,25 +50,25 @@ const Button = ({
     ...rest
 }: Props) => {
     const variantClasses = {
-        primary: `bg-primary text-primary-foreground  hover:bg-primary-hover`,
-        secondary: `bg-secondary text-secondary-foreground hover:bg-secondary-hover`,
+        primary: `bg-primary text-primary-foreground hover:bg-primary/85`,
+        secondary: `bg-secondary text-secondary-foreground hover:bg-secondary/85`,
         success: `bg-green-500 text-white hover:bg-green-600`,
         warning: `bg-orange-500 text-white hover:bg-orange-600`,
         danger: `bg-destructive text-destructive-foreground hover:bg-destructive/70`,
         info: `bg-blue-500 text-white hover:bg-blue-600`,
-        light: `bg-background-active text-foreground hover:bg-background-active`,
+        light: `bg-background-light text-foreground hover:bg-background-light/70`,
         dark: `bg-foreground text-background hover:bg-foreground/80`,
         link: `text-foreground hover:text-primary`,
         'no-color': '',
     }[variant || 'primary'];
 
     const iconClasses = cn(
-        'min-w-9 aspect-square text-xl p-0 inline-flex items-center justify-center rounded-md',
+        'min-w-9 aspect-square text-lg p-0 inline-flex items-center justify-center rounded-md',
         variantClasses,
     );
 
     const buttonClasses = cn(
-        `group h-12 px-8 inline-flex justify-center items-center gap-2 text-lg uppercase font-anton tracking-widest outline-none transition-colors relative overflow-hidden`,
+        `group h-11 px-7 inline-flex justify-center items-center gap-2 text-base uppercase font-anton tracking-widest outline-none transition-colors relative overflow-hidden rounded-sm focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background`,
         variantClasses,
         { [iconClasses]: icon },
         className,

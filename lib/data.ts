@@ -1,5 +1,7 @@
 import { IProject } from '@/types';
 
+export const SITE_URL = 'https://nameisblank.vercel.app';
+
 export const GENERAL_INFO = {
     email: 'nathancodes05@gmail.com',
 
@@ -35,6 +37,22 @@ export const MY_STACK = {
         {
             name: 'Next.js',
             icon: '/logo/next.png',
+        },
+        {
+            name: 'React Native',
+            icon: '/logo/react.png',
+        },
+        {
+            name: 'Ionic',
+            icon: '/logo/ionic.svg',
+        },
+        {
+            name: 'Vue',
+            icon: '/logo/vue.svg',
+        },
+        {
+            name: 'Nuxt',
+            icon: '/logo/nuxt.svg',
         },
         {
             name: 'Redux',
@@ -88,6 +106,10 @@ export const MY_STACK = {
             name: 'MongoDB',
             icon: '/logo/mongodb.svg',
         },
+        {
+            name: 'Supabase',
+            icon: '/logo/supabase.svg',
+        },
     ],
     tools: [
         {
@@ -128,6 +150,8 @@ export const PROJECTS: IProject[] = [
     
     Key Features:<br/>
     <ul>
+      <li>🤖 AI-Generated Conversations: Simulated dialogue practice for real-world vocabulary building</li>
+      <li>📊 Progress Dashboard: Tracks learning history and surfaces dynamic lessons based on it</li>
       <li>🎮 Interactive 3D Challenges: Immersive language exercises powered by Three.js</li>
       <li>🛠️ Service Showcase: Dynamic service display with synchronized sliders</li>
       <li>✍️ Blog Management: SEO-optimized blog with categorization, search, and dynamic meta tags</li>
@@ -169,10 +193,10 @@ export const PROJECTS: IProject[] = [
             'Payload CMS',
         ],
         thumbnail: '/projects/thumbnail/delve.jpeg',
-        longThumbnail: '/projects/long/delve.png',
+        longThumbnail: '/projects/thumbnail/delve.jpeg',
         images: [
-            '/projects/images/delve-1.png',
-            '/projects/images/delve-2.png',
+            '/projects/images/delve-1.jpg',
+            '/projects/images/delve-2.jpg',
         ],
     },
     {
@@ -180,7 +204,7 @@ export const PROJECTS: IProject[] = [
         slug: 'resume-roaster',
         techStack: ['Next.js', 'PostgreSQL', 'GPT-4', 'Tailwind CSS'],
         thumbnail: '/projects/thumbnail/resume-roaster.jpg',
-        longThumbnail: '/projects/long/resume-roaster.jpg',
+        longThumbnail: '/projects/thumbnail/resume-roaster.jpg',
         images: [
             '/projects/images/resume-roaster-1.png',
             '/projects/images/resume-roaster-2.png',
@@ -199,7 +223,7 @@ export const PROJECTS: IProject[] = [
         slug: 'epikcart',
         techStack: ['React.js', 'Tailwind CSS', 'Redux', 'React Hook Form'],
         thumbnail: '/projects/thumbnail/epikcart.jpg',
-        longThumbnail: '/projects/long/epikcart.jpg',
+        longThumbnail: '/projects/thumbnail/epikcart.jpg',
         images: [
             '/projects/images/epikcart-1.png',
             '/projects/images/epikcart-2.png',
@@ -219,7 +243,7 @@ export const PROJECTS: IProject[] = [
         slug: 'property-pro',
         techStack: ['Next.js', 'Tailwind CSS', 'GPT-4', 'React i18n'],
         thumbnail: '/projects/thumbnail/oversabi.png',
-        longThumbnail: '/projects/long/property-pro.jpg',
+        longThumbnail: '/projects/thumbnail/oversabi.png',
         images: [
             '/projects/images/property-pro-1.png',
             '/projects/images/property-pro-2.png',
@@ -235,37 +259,97 @@ export const PROJECTS: IProject[] = [
         - Implemented multi-language support with React i18n to cater to diverse audiences.<br/>
         - Enhanced user interaction with animations and transitions using Framer Motion.`,
     },
+    {
+        title: 'HNG Boilerplate',
+        slug: 'hng-boilerplate',
+        techStack: ['Next.js', 'TypeScript', 'ESLint', 'Prettier', 'Husky'],
+        thumbnail: '/projects/thumbnail/hng-boilerplate.svg',
+        longThumbnail: '/projects/thumbnail/hng-boilerplate.svg',
+        images: ['/projects/images/hng-boilerplate-1.svg'],
+        year: 2024,
+        description:
+            'An open-source frontend starter built during the HNG internship to give teams a fast, consistent way to spin up new projects. Ships with a documented library of reusable components and design patterns, plus linting, formatting, and best-practice tooling baked in from the start.',
+        role: `As the maintainer, I:<br/>
+        - Built and documented reusable components and design patterns for the starter kit.<br/>
+        - Integrated linting, formatting, and best practices for rapid onboarding.<br/>
+        - Supported adoption by multiple teams during the HNG internship for faster setup and consistent code quality.`,
+    },
+    {
+        title: 'Lovla',
+        slug: 'lovla',
+        techStack: ['React Native', 'Expo', 'Supabase', 'Zustand'],
+        thumbnail: '/projects/thumbnail/lovla.svg',
+        longThumbnail: '/projects/thumbnail/lovla.svg',
+        images: ['/projects/images/lovla-1.svg'],
+        year: 2025,
+        description:
+            'Lovla is a cross-platform mobile coloring app built with Expo and React Native. It centers on an interactive coloring canvas with touch-gesture support, letting users select colors, fill regions, and draw freely on a clean, responsive interface optimized for mobile.',
+        role: `As the developer, I:<br/>
+        - Built the mobile application using Expo and React Native, ensuring cross-platform compatibility for iOS and Android.<br/>
+        - Implemented an interactive coloring canvas with touch gestures for selecting colors, filling regions, and freehand drawing.<br/>
+        - Designed a clean, responsive UI optimized for mobile devices.<br/>
+        - Integrated a customizable color palette system.`,
+    },
+];
+
+export const CERTIFICATIONS = [
+    { name: 'HNG 11 Finalist', year: '2024' },
+    { name: 'Proficiency in Frontend Development', year: '2024' },
 ];
 
 export const MY_EXPERIENCE = [
     {
-        title: 'Software Engineer',
+        title: 'Mobile Developer',
+        company: 'Runwae',
+        duration: 'Jan 2026 - Present',
+        highlights: [
+            'Architected a cross-platform mobile ecosystem with React Native and Expo, cutting development overhead by 40% while keeping native-level performance.',
+            'Established CI/CD pipelines and automated testing for the mobile stack, achieving 99.9% crash-free sessions.',
+        ],
+    },
+    {
+        title: 'Frontend Developer',
+        company: 'Evoolv',
+        duration: 'Nov 2025 - Feb 2026',
+        highlights: [
+            'Led UI/UX engineering standards, building a reusable component library and design system for the team.',
+            'Engineered API orchestration layers, using Postman for rigorous contract testing and documentation.',
+        ],
+    },
+    {
+        title: 'Mobile Developer',
         company: '9lives',
-        duration: 'Aug 2025 - Present',
+        duration: 'Aug 2025 - Jan 2026',
+        highlights: [
+            'Scaled a cross-platform mobile ecosystem with React Native and Expo, accelerating time-to-market by 40%.',
+            'Integrated APIs and third-party services via Expo, including speech transcription.',
+        ],
     },
     {
-        title: 'Software Developer',
-        company: 'HNG Tech',
-        duration: 'Jul 2024 - Aug 2025',
-    },
-    {
-        title: 'Frontend Engineer',
+        title: 'Frontend Developer',
         company: 'ExamCrush',
         duration: 'Jul 2025 - Aug 2025',
+        highlights: [
+            'Refactored and modernized legacy codebases, reducing technical debt by 20%.',
+            'Introduced end-to-end automated testing with Vitest, cutting QA time by 30%.',
+        ],
     },
     {
         title: 'Frontend Developer',
         company: 'BrandDrive',
         duration: 'Oct 2024 - Mar 2025',
+        highlights: [
+            'Deployed robust form handling with React Hook Form, reducing form bugs by 40%.',
+            'Built interactive dashboards and modals with ShadCN UI and Zustand, boosting task completion by 20%.',
+        ],
     },
     {
         title: 'Frontend Developer',
-        company: 'Grit Inforemd Media',
-        duration: 'May 2022 - Jul 2023',
-    },
-    {
-        title: 'Frontend Developer',
-        company: 'GPRS Innovation Hub',
-        duration: 'Jun 2021 - Apr 2022',
+        company: 'HNG Tech',
+        duration: 'Jul 2024 - Oct 2024',
+        highlights: [
+            'Mentored teams delivering frontend features for 1000+ users across 8-week sprints.',
+            'Improved accessibility across 25+ screens to meet WCAG 2.1 AA, achieving a 100% Lighthouse accessibility score.',
+        ],
     },
 ];
