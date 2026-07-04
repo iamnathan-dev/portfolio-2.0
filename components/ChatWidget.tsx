@@ -1,11 +1,19 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { Bot, Send, X } from 'lucide-react';
+import { Bot, CheckCheck, Send, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 interface Message {
     role: 'user' | 'assistant';
     content: string;
+    time: string;
+}
+
+function now() {
+    return new Date().toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
 }
 
 const SUGGESTIONS = [
@@ -38,8 +46,11 @@ const ChatWidget = () => {
         const trimmed = text.trim();
         if (!trimmed || isStreaming) return;
 
-        const history: Message[] = [...messages, { role: 'user', content: trimmed }];
-        setMessages([...history, { role: 'assistant', content: '' }]);
+        const history: Message[] = [
+            ...messages,
+            { role: 'user', content: trimmed, time: now() },
+        ];
+        setMessages([...history, { role: 'assistant', content: '', time: now() }]);
         setInput('');
         setError(null);
         setIsStreaming(true);
@@ -70,6 +81,7 @@ const ChatWidget = () => {
                     updated[updated.length - 1] = {
                         role: 'assistant',
                         content: accumulated,
+                        time: updated[updated.length - 1].time,
                     };
                     return updated;
                 });
@@ -103,25 +115,29 @@ const ChatWidget = () => {
                 aria-label="Chat with Nathan's AI assistant"
                 aria-hidden={!isOpen}
                 className={cn(
-                    'fixed bottom-[136px] right-5 md:right-8 z-[4] flex h-[70vh] max-h-[520px] w-[calc(100vw-2.5rem)] origin-bottom-right flex-col overflow-hidden rounded-lg border border-primary/30 bg-background transition-all duration-300 sm:w-[380px]',
+                    'fixed bottom-[136px] right-5 md:right-8 z-[4] flex h-[70vh] max-h-[520px] w-[calc(100vw-2.5rem)] origin-bottom-right flex-col overflow-hidden rounded-2xl border border-primary/30 bg-background transition-all duration-300 sm:w-[380px]',
                     isOpen
                         ? 'opacity-100 scale-100 pointer-events-auto'
                         : 'opacity-0 scale-95 pointer-events-none',
                 )}
             >
-                <div className="flex items-center justify-between border-b border-primary/20 bg-primary/[0.04] px-4 py-3">
-                    <div className="flex items-center gap-1.5">
-                        <span className="size-2 rounded-full bg-[#ff5f56]" />
-                        <span className="size-2 rounded-full bg-[#ffbd2e]" />
-                        <span className="size-2 rounded-full bg-[#27c93f]" />
+                <div className="flex items-center gap-2.5 border-b border-primary/20 bg-primary/[0.05] px-4 py-3">
+                    <div className="relative flex size-8 shrink-0 items-center justify-center rounded-full border border-primary/30 bg-primary/15">
+                        <Bot size={16} className="text-primary" />
+                        <span className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full border-2 border-background bg-primary" />
                     </div>
-                    <span className="font-mono text-xs text-primary tracking-wide">
-                        ask-nathan.ts
-                    </span>
+                    <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-medium leading-tight">
+                            Nathan&apos;s AI Assistant
+                        </p>
+                        <p className="font-mono text-[10px] tracking-wide text-primary">
+                            online
+                        </p>
+                    </div>
                     <button
                         onClick={() => setIsOpen(false)}
                         aria-label="Close chat"
-                        className="text-muted-foreground transition-colors hover:text-primary"
+                        className="shrink-0 text-muted-foreground transition-colors hover:text-primary"
                     >
                         <X size={16} />
                     </button>
@@ -129,21 +145,20 @@ const ChatWidget = () => {
 
                 <div
                     ref={scrollRef}
-                    className="flex-1 space-y-3 overflow-y-auto px-4 py-4 font-mono text-sm"
+                    className="flex-1 space-y-3 overflow-y-auto bg-[radial-gradient(hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:16px_16px] px-3.5 py-4 text-sm"
                 >
                     {messages.length === 0 && (
-                        <div>
-                            <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
-                                <span className="text-primary">$</span> Hi, I&apos;m
-                                Nathan&apos;s AI assistant. Ask me anything about his
-                                work.
-                            </p>
-                            <div className="flex flex-col gap-2">
+                        <div className="flex flex-col items-start">
+                            <div className="max-w-[85%] rounded-2xl rounded-bl-sm border border-border/70 bg-muted/60 px-3.5 py-2.5 leading-relaxed">
+                                👋 Hi, I&apos;m Nathan&apos;s AI assistant. Ask me
+                                anything about his work.
+                            </div>
+                            <div className="mt-3 flex flex-wrap gap-2">
                                 {SUGGESTIONS.map((s) => (
                                     <button
                                         key={s}
                                         onClick={() => sendMessage(s)}
-                                        className="rounded border border-border px-3 py-2 text-left text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                                        className="rounded-full border border-primary/30 bg-primary/[0.06] px-3 py-1.5 text-left text-xs text-primary transition-colors hover:bg-primary/15"
                                     >
                                         {s}
                                     </button>
@@ -156,16 +171,16 @@ const ChatWidget = () => {
                         <div
                             key={i}
                             className={cn(
-                                'max-w-[85%]',
-                                m.role === 'user' && 'ml-auto',
+                                'flex flex-col',
+                                m.role === 'user' ? 'items-end' : 'items-start',
                             )}
                         >
-                            <p
+                            <div
                                 className={cn(
-                                    'whitespace-pre-wrap rounded-md px-3 py-2 text-xs leading-relaxed',
+                                    'max-w-[80%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 leading-relaxed',
                                     m.role === 'user'
-                                        ? 'bg-primary text-black'
-                                        : 'border border-border text-foreground',
+                                        ? 'rounded-br-sm bg-primary text-primary-foreground'
+                                        : 'rounded-bl-sm border border-border/70 bg-muted/60 text-foreground',
                                 )}
                             >
                                 {m.content ||
@@ -176,7 +191,16 @@ const ChatWidget = () => {
                                             <span className="size-1.5 animate-bounce rounded-full bg-muted-foreground" />
                                         </span>
                                     ))}
-                            </p>
+                            </div>
+                            <div className="mt-1 flex items-center gap-1 px-1 font-mono text-[10px] text-muted-foreground/50">
+                                <span>{m.time}</span>
+                                {m.role === 'user' && (
+                                    <CheckCheck
+                                        size={12}
+                                        className="text-primary/70"
+                                    />
+                                )}
+                            </div>
                         </div>
                     ))}
 
@@ -198,13 +222,13 @@ const ChatWidget = () => {
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Ask about Nathan..."
                         disabled={isStreaming}
-                        className="flex-1 bg-transparent font-mono text-sm outline-none placeholder:text-muted-foreground disabled:opacity-50"
+                        className="flex-1 rounded-full border border-border/70 bg-muted/40 px-4 py-2.5 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/50 disabled:opacity-50"
                     />
                     <button
                         type="submit"
                         disabled={isStreaming || !input.trim()}
                         aria-label="Send message"
-                        className="flex size-9 shrink-0 items-center justify-center rounded border border-primary/40 text-primary transition-colors hover:bg-primary hover:text-black disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-primary"
+                        className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-all hover:scale-105 disabled:opacity-40 disabled:hover:scale-100"
                     >
                         <Send size={14} />
                     </button>

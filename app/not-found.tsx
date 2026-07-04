@@ -1,5 +1,4 @@
 import Button from '@/components/Button';
-import { Home } from 'lucide-react';
 
 export default function NotFound() {
     return (
@@ -35,7 +34,6 @@ export default function NotFound() {
                     variant="primary"
                     className="mt-9 inline-flex"
                 >
-                    <Home size={16} />
                     Back to home
                 </Button>
             </div>

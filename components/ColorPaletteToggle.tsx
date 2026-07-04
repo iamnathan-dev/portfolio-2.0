@@ -10,12 +10,12 @@ const ColorPaletteToggle = () => {
     const { selected, selectPalette } = useColorPalette();
 
     return (
-        <div className="relative">
+        <>
             <button
                 onClick={() => setIsOpen((v) => !v)}
                 aria-label="Change accent color"
                 aria-expanded={isOpen}
-                className="size-11 rounded-full border border-border flex items-center justify-center transition-colors hover:border-primary hover:text-primary"
+                className="fixed bottom-[136px] right-5 md:right-8 z-[4] size-11 rounded-full border border-primary/40 bg-background/80 backdrop-blur transition-all hover:border-primary hover:text-primary flex items-center justify-center"
             >
                 <Palette size={18} />
             </button>
@@ -30,7 +30,7 @@ const ColorPaletteToggle = () => {
                     <div
                         role="dialog"
                         aria-label="Accent color settings"
-                        className="absolute right-0 top-14 z-[5] w-56 rounded-lg border border-primary/30 bg-background p-4"
+                        className="fixed bottom-[192px] right-5 md:right-8 z-[5] w-56 rounded-lg border border-primary/30 bg-background p-4"
                     >
                         <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                             {'// Accent Color'}
@@ -67,7 +67,7 @@ const ColorPaletteToggle = () => {
                     </div>
                 </>
             )}
-        </div>
+        </>
     );
 };
 

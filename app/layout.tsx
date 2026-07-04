@@ -12,6 +12,7 @@ import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/CustomCursor';
 import ScrollToTop from '@/components/ScrollToTop';
 import ChatWidget from '@/components/ChatWidget';
+import ColorPaletteToggle from '@/components/ColorPaletteToggle';
 import CommandPalette from '@/components/CommandPalette';
 import Preloader from '../components/Preloader';
 import StickyEmail from './_components/StickyEmail';
@@ -187,6 +188,7 @@ export default function RootLayout({
                     <ParticleBackground />
                     <StickyEmail />
                     <ScrollToTop />
+                    <ColorPaletteToggle />
                     <ChatWidget />
                     <CommandPalette />
                 </ReactLenis>

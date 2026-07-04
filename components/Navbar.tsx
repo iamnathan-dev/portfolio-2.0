@@ -8,7 +8,6 @@ import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
 import { COLOR_PALETTES } from '@/lib/colorPalettes';
 import { useColorPalette } from '@/hooks/useColorPalette';
 import ThemeToggle from './ThemeToggle';
-import ColorPaletteToggle from './ColorPaletteToggle';
 
 const MENU_LINKS = [
     {
@@ -55,15 +54,11 @@ const Navbar = () => {
                         )
                     }
                     aria-label="Open command palette"
-                    className="hidden sm:flex absolute top-5 right-52 md:right-60 z-[2] items-center gap-1.5 rounded border border-border px-2.5 h-11 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary"
+                    className="hidden sm:flex absolute top-5 right-36 md:right-44 z-[2] items-center gap-1.5 rounded border border-border px-2.5 h-11 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary"
                 >
                     <Search size={14} />
                     <kbd className="text-[10px]">⌘K</kbd>
                 </button>
-
-                <div className="absolute top-5 right-36 md:right-44 z-[2]">
-                    <ColorPaletteToggle />
-                </div>
 
                 <div className="absolute top-5 right-20 md:right-28 z-[2]">
                     <ThemeToggle />
