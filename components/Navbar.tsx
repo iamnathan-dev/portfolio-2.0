@@ -1,11 +1,14 @@
 'use client';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
-import { MoveUpRight } from 'lucide-react';
+import { MoveUpRight, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
+import { COLOR_PALETTES } from '@/lib/colorPalettes';
+import { useColorPalette } from '@/hooks/useColorPalette';
 import ThemeToggle from './ThemeToggle';
+import ColorPaletteToggle from './ColorPaletteToggle';
 
 const MENU_LINKS = [
     {
@@ -24,11 +27,16 @@ const MENU_LINKS = [
         name: 'Projects',
         url: '/#selected-projects',
     },
+    {
+        name: 'Articles',
+        url: '/#articles',
+    },
 ];
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const router = useRouter();
+    const { selected, selectPalette } = useColorPalette();
 
     return (
         <>
@@ -39,6 +47,23 @@ const Navbar = () => {
                 >
                     N<span className="text-primary">.</span>J
                 </Link>
+
+                <button
+                    onClick={() =>
+                        window.dispatchEvent(
+                            new Event('open-command-palette'),
+                        )
+                    }
+                    aria-label="Open command palette"
+                    className="hidden sm:flex absolute top-5 right-52 md:right-60 z-[2] items-center gap-1.5 rounded border border-border px-2.5 h-11 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary"
+                >
+                    <Search size={14} />
+                    <kbd className="text-[10px]">⌘K</kbd>
+                </button>
+
+                <div className="absolute top-5 right-36 md:right-44 z-[2]">
+                    <ColorPaletteToggle />
+                </div>
 
                 <div className="absolute top-5 right-20 md:right-28 z-[2]">
                     <ThemeToggle />
@@ -174,16 +199,47 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className="w-full max-w-[420px] mx-8 sm:mx-auto">
-                    <p className="font-mono text-sm text-muted-foreground mb-4 tracking-widest">
-                        {'// GET IN TOUCH'}
-                    </p>
-                    <a
-                        href={`mailto:${GENERAL_INFO.email}`}
-                        className="text-lg transition-colors hover:text-primary hover:underline"
-                    >
-                        {GENERAL_INFO.email}
-                    </a>
+                <div className="w-full max-w-[420px] mx-8 sm:mx-auto space-y-8">
+                    <div>
+                        <p className="font-mono text-sm text-muted-foreground mb-4 tracking-widest">
+                            {'// ACCENT COLOR'}
+                        </p>
+                        <div className="flex gap-3">
+                            {COLOR_PALETTES.map((palette) => (
+                                <button
+                                    key={palette.id}
+                                    onClick={() => selectPalette(palette.id)}
+                                    aria-label={`${palette.name} accent color`}
+                                    aria-pressed={selected === palette.id}
+                                    className={cn(
+                                        'flex size-9 items-center justify-center rounded-full border-2 transition-colors',
+                                        selected === palette.id
+                                            ? 'border-primary'
+                                            : 'border-transparent hover:border-border',
+                                    )}
+                                >
+                                    <span
+                                        className="size-6 rounded-full border border-white/10"
+                                        style={{
+                                            backgroundColor: palette.swatch,
+                                        }}
+                                    />
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div>
+                        <p className="font-mono text-sm text-muted-foreground mb-4 tracking-widest">
+                            {'// GET IN TOUCH'}
+                        </p>
+                        <a
+                            href={`mailto:${GENERAL_INFO.email}`}
+                            className="text-lg transition-colors hover:text-primary hover:underline"
+                        >
+                            {GENERAL_INFO.email}
+                        </a>
+                    </div>
                 </div>
             </div>
         </>

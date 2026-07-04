@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { IProject } from '@/types';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { Loader2 } from 'lucide-react';
+import { ImageOff, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
@@ -92,7 +92,7 @@ const Project = ({ index, project }: Props) => {
             href={href}
             target={isExternal ? '_blank' : undefined}
             rel={isExternal ? 'noopener noreferrer' : undefined}
-            className="project-item group relative block rounded-lg border border-border/70 bg-foreground/[0.03] backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_0_35px_-10px] hover:shadow-primary/50"
+            className="project-item group relative block rounded-lg border border-border/70 bg-foreground/[0.03] backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/60 hover:-translate-y-1"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
@@ -103,26 +103,37 @@ const Project = ({ index, project }: Props) => {
             <span className="pointer-events-none absolute -bottom-px -right-px z-10 h-4 w-4 border-b-2 border-r-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
 
             <div className="relative overflow-hidden aspect-[3/2] bg-muted">
-                {!isImageLoaded && (
-                    <div className="absolute inset-0 flex items-center justify-center animate-pulse bg-foreground/[0.06]">
-                        <Loader2
+                {project.thumbnail ? (
+                    <>
+                        {!isImageLoaded && (
+                            <div className="absolute inset-0 flex items-center justify-center animate-pulse bg-foreground/[0.06]">
+                                <Loader2
+                                    size={22}
+                                    className="animate-spin text-muted-foreground/50"
+                                />
+                            </div>
+                        )}
+                        <Image
+                            src={project.thumbnail}
+                            alt={`${project.title} preview`}
+                            width="600"
+                            height="400"
+                            className={cn(
+                                'w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105',
+                                isImageLoaded ? 'opacity-100' : 'opacity-0',
+                            )}
+                            loading="lazy"
+                            onLoad={() => setIsImageLoaded(true)}
+                        />
+                    </>
+                ) : (
+                    <div className="absolute inset-0 flex items-center justify-center border border-dashed border-border/60">
+                        <ImageOff
                             size={22}
-                            className="animate-spin text-muted-foreground/50"
+                            className="text-muted-foreground/30"
                         />
                     </div>
                 )}
-                <Image
-                    src={project.thumbnail}
-                    alt={`${project.title} preview`}
-                    width="600"
-                    height="400"
-                    className={cn(
-                        'w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105',
-                        isImageLoaded ? 'opacity-100' : 'opacity-0',
-                    )}
-                    loading="lazy"
-                    onLoad={() => setIsImageLoaded(true)}
-                />
 
                 {/* tech grid overlay */}
                 <div

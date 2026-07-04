@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s -o /dev/null -w \"404page: %{http_code}\\\\n\" http://localhost:3000/this-does-not-exist)",
+      "Bash(npm view *)",
+      "Bash(cp /Users/mac/Documents/code/portfolio-2.0/node_modules/@prudentbird/voxx-core/dist/telemetry.mjs /tmp/telemetry.mjs.orig *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('exports', {}\\), indent=2\\)\\)\")",
+      "Bash(curl -s -w \"robots: %{http_code}\\\\n\" http://localhost:3000/robots.txt -o /tmp/robots2.txt)",
+      "Bash(xxd \"app/\\(voxx\\)/robots.ts\")",
+      "Bash(curl -s -o /dev/null -w \"hng-boilerplate: %{http_code}\\\\n\" http://localhost:3000/projects/hng-boilerplate)",
+      "Bash(curl -s -o /dev/null -w \"manifest: %{http_code}\\\\n\" http://localhost:3000/manifest.webmanifest)",
+      "Bash(curl -s -X POST http://localhost:3000/api/chat -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}' -o /dev/null -w \"chat-api: %{http_code}\\\\n\")",
+      "Bash(pnpm remove *)",
+      "Bash(curl -s -o /dev/null -w \"blog\\(should-404-now\\): %{http_code}\\\\n\" http://localhost:3000/blog)",
+      "Bash(mkdir -p \"/Users/mac/Documents/code/portfolio-2.0/app/articles/[slug]/_components\")",
+      "Bash(curl -s -o /dev/null -w \"article1: %{http_code}\\\\n\" http://localhost:3000/articles/first-article)",
+      "Bash(curl -s -o /dev/null -w \"article2: %{http_code}\\\\n\" http://localhost:3000/articles/second-article)",
+      "Bash(curl -s -o /dev/null -w \"article3: %{http_code}\\\\n\" http://localhost:3000/articles/third-article)",
+      "Bash(curl -s -o /dev/null -w \"nonexistent-article: %{http_code}\\\\n\" http://localhost:3000/articles/does-not-exist)",
+      "Bash(curl -s http://localhost:3000/articles/first-article)",
+      "Bash(curl -s -o /dev/null -w \"article: %{http_code}\\\\n\" http://localhost:3000/articles/first-article)"
+    ],
+    "additionalDirectories": [
+      "/tmp",
+      "/Users/mac/Documents/code/portfolio-2.0/app/articles/[slug]"
+    ]
+  }
+}

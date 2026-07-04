@@ -214,7 +214,7 @@ const CodeEditor = () => {
     }
 
     return (
-        <div className="relative w-full rounded-lg border border-border bg-[#0d1117] shadow-[0_0_50px_-15px] shadow-primary/20 overflow-hidden">
+        <div className="relative w-full rounded-lg border border-border bg-[#0d1117] overflow-hidden">
             <span className="pointer-events-none absolute -top-px -left-px h-4 w-4 border-l-2 border-t-2 border-primary/60" />
             <span className="pointer-events-none absolute -bottom-px -right-px h-4 w-4 border-b-2 border-r-2 border-primary/60" />
 

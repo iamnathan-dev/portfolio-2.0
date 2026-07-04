@@ -103,7 +103,7 @@ const ChatWidget = () => {
                 aria-label="Chat with Nathan's AI assistant"
                 aria-hidden={!isOpen}
                 className={cn(
-                    'fixed bottom-[136px] right-5 md:right-8 z-[4] flex h-[70vh] max-h-[520px] w-[calc(100vw-2.5rem)] origin-bottom-right flex-col overflow-hidden rounded-lg border border-primary/30 bg-background shadow-[0_0_60px_-15px] shadow-primary/30 transition-all duration-300 sm:w-[380px]',
+                    'fixed bottom-[136px] right-5 md:right-8 z-[4] flex h-[70vh] max-h-[520px] w-[calc(100vw-2.5rem)] origin-bottom-right flex-col overflow-hidden rounded-lg border border-primary/30 bg-background transition-all duration-300 sm:w-[380px]',
                     isOpen
                         ? 'opacity-100 scale-100 pointer-events-auto'
                         : 'opacity-0 scale-95 pointer-events-none',

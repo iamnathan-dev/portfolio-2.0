@@ -7,7 +7,7 @@ import { IProject } from '@/types';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github, ImageOff } from 'lucide-react';
 import Image from 'next/image';
 import { useRef } from 'react';
 
@@ -158,15 +158,44 @@ const ProjectDetails = ({ project }: Props) => {
                                     ))}
                                 </div>
                             </div>
-                            <div className="fade-in-later">
-                                <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
-                                    Description
-                                </p>
+                            {project.caseStudy ? (
+                                <>
+                                    <div className="fade-in-later">
+                                        <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
+                                            The Problem
+                                        </p>
+                                        <div className="text-base">
+                                            {project.caseStudy.problem}
+                                        </div>
+                                    </div>
+                                    <div className="fade-in-later">
+                                        <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
+                                            The Approach
+                                        </p>
+                                        <div className="text-base">
+                                            {project.caseStudy.approach}
+                                        </div>
+                                    </div>
+                                    <div className="fade-in-later">
+                                        <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
+                                            The Impact
+                                        </p>
+                                        <div className="text-base">
+                                            {project.caseStudy.impact}
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="fade-in-later">
+                                    <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
+                                        Description
+                                    </p>
 
-                                <div className="text-base prose-xl markdown-text">
-                                    {parse(project.description)}
+                                    <div className="text-base prose-xl markdown-text">
+                                        {parse(project.description)}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                             {project.role && (
                                 <div className="fade-in-later">
                                     <p className="font-mono text-xs text-primary uppercase tracking-widest mb-2">
@@ -188,6 +217,14 @@ const ProjectDetails = ({ project }: Props) => {
                     className="fade-in-later relative flex flex-col gap-2 max-w-[800px] mx-auto"
                     id="images"
                 >
+                    {project.images.length === 0 && (
+                        <div className="flex w-full items-center justify-center border border-dashed border-border/60 rounded-md aspect-[750/400]">
+                            <ImageOff
+                                size={28}
+                                className="text-muted-foreground/30"
+                            />
+                        </div>
+                    )}
                     {project.images.map((image, idx) => (
                         <div
                             key={image}

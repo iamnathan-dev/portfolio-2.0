@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation';
-import ProjectDetails from './_components/ProjectDetails';
-import { PROJECTS, SITE_URL } from '@/lib/data';
+import ArticleDetails from './_components/ArticleDetails';
+import { ARTICLES, SITE_URL } from '@/lib/data';
 import { stripHtml } from '@/lib/utils';
 import { Metadata } from 'next';
 
 export const generateStaticParams = async () => {
-    return PROJECTS.map((project) => ({ slug: project.slug }));
+    return ARTICLES.map((article) => ({ slug: article.slug }));
 };
 
 export const generateMetadata = async ({
@@ -14,23 +14,20 @@ export const generateMetadata = async ({
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> => {
     const { slug } = await params;
-    const project = PROJECTS.find((project) => project.slug === slug);
+    const article = ARTICLES.find((article) => article.slug === slug);
 
-    if (!project) return {};
+    if (!article) return {};
 
-    const title = `${project.title} - ${project.techStack
-        .slice(0, 3)
-        .join(', ')}`;
-    const description = stripHtml(project.description);
-    const url = `${SITE_URL}/projects/${project.slug}`;
-    const ogImage = project.thumbnail || '/images/og-image.png';
+    const description = stripHtml(article.excerpt);
+    const url = `${SITE_URL}/articles/${article.slug}`;
+    const ogImage = article.image || '/images/og-image.png';
 
     return {
-        title,
+        title: article.title,
         description,
         alternates: { canonical: url },
         openGraph: {
-            title,
+            title: article.title,
             description,
             url,
             type: 'article',
@@ -38,7 +35,7 @@ export const generateMetadata = async ({
         },
         twitter: {
             card: 'summary_large_image',
-            title,
+            title: article.title,
             description,
             images: [ogImage],
         },
@@ -48,13 +45,13 @@ export const generateMetadata = async ({
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
     const { slug } = await params;
 
-    const project = PROJECTS.find((project) => project.slug === slug);
+    const article = ARTICLES.find((article) => article.slug === slug);
 
-    if (!project) {
+    if (!article) {
         return notFound();
     }
 
-    return <ProjectDetails project={project} />;
+    return <ArticleDetails article={article} />;
 };
 
 export default Page;

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { PROJECTS, SITE_URL } from '@/lib/data';
+import { ARTICLES, PROJECTS, SITE_URL } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const projectEntries: MetadataRoute.Sitemap = PROJECTS.map((project) => ({
@@ -7,6 +7,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.7,
+    }));
+
+    const articleEntries: MetadataRoute.Sitemap = ARTICLES.map((article) => ({
+        url: `${SITE_URL}/articles/${article.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.6,
     }));
 
     return [
@@ -17,5 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         ...projectEntries,
+        ...articleEntries,
     ];
 }

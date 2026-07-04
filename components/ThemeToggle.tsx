@@ -6,7 +6,12 @@ const ThemeToggle = () => {
     const [isLight, setIsLight] = useState<boolean | null>(null);
 
     useEffect(() => {
-        setIsLight(document.documentElement.classList.contains('light'));
+        const sync = () =>
+            setIsLight(document.documentElement.classList.contains('light'));
+
+        sync();
+        window.addEventListener('themechange', sync);
+        return () => window.removeEventListener('themechange', sync);
     }, []);
 
     const toggleTheme = () => {
@@ -14,6 +19,7 @@ const ThemeToggle = () => {
         setIsLight(next);
         document.documentElement.classList.toggle('light', next);
         localStorage.setItem('theme', next ? 'light' : 'dark');
+        window.dispatchEvent(new Event('themechange'));
     };
 
     if (isLight === null) {

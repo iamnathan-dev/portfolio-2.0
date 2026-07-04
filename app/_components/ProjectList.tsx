@@ -14,20 +14,17 @@ const ProjectList = () => {
 
     useGSAP(
         () => {
-            const tl = gsap.timeline({
+            gsap.from('.project-item', {
+                y: 30,
+                opacity: 0,
+                duration: 0.5,
+                stagger: 0.06,
+                ease: 'power2.out',
                 scrollTrigger: {
                     trigger: gridRef.current,
-                    start: 'top 85%',
-                    end: 'top 40%',
-                    toggleActions: 'restart none none reverse',
-                    scrub: 1,
+                    start: 'top 95%',
+                    toggleActions: 'play none none none',
                 },
-            });
-
-            tl.from('.project-item', {
-                y: 80,
-                opacity: 0,
-                stagger: 0.15,
             });
         },
         { scope: gridRef },

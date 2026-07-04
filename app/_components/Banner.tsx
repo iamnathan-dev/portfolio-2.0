@@ -6,10 +6,11 @@ import Counter from '@/components/Counter';
 import LiveClock from '@/components/LiveClock';
 import Magnetic from '@/components/Magnetic';
 import ScrambleText from '@/components/ScrambleText';
-import { GENERAL_INFO } from '@/lib/data';
+import { GENERAL_INFO, RESUME_URL } from '@/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import { Download } from 'lucide-react';
 import React from 'react';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -23,27 +24,6 @@ const ROLES = [
 
 const Banner = () => {
     const containerRef = React.useRef<HTMLDivElement>(null);
-
-    // move the content a little up on scroll
-    useGSAP(
-        () => {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'bottom 70%',
-                    end: 'bottom 10%',
-                    scrub: 1,
-                },
-            });
-
-            tl.fromTo(
-                '.slide-up-and-fade',
-                { y: 0 },
-                { y: -150, opacity: 0, stagger: 0.02 },
-            );
-        },
-        { scope: containerRef },
-    );
 
     // snap the HUD corner brackets into place on load
     useGSAP(() => {
@@ -112,17 +92,32 @@ const Banner = () => {
                         web and mobile products — from pixel-perfect UI to the
                         APIs that power it.
                     </p>
-                    <Magnetic className="mt-9 banner-button slide-up-and-fade inline-block">
-                        <Button
-                            as="link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={GENERAL_INFO.linkedinProfile}
-                            variant="primary"
-                        >
-                            Hire Me
-                        </Button>
-                    </Magnetic>
+                    <div className="mt-9 flex flex-wrap items-center gap-4">
+                        <Magnetic className="banner-button slide-up-and-fade inline-block">
+                            <Button
+                                as="link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href={GENERAL_INFO.linkedinProfile}
+                                variant="primary"
+                            >
+                                Hire Me
+                            </Button>
+                        </Magnetic>
+                        <Magnetic className="banner-button slide-up-and-fade inline-block">
+                            <a
+                                href={RESUME_URL}
+                                download
+                                className="group flex h-12 items-center gap-2 rounded-sm border border-primary/40 px-6 font-anton text-lg uppercase tracking-widest text-primary transition-colors hover:bg-primary hover:text-black"
+                            >
+                                <Download
+                                    size={16}
+                                    className="transition-transform group-hover:translate-y-0.5"
+                                />
+                                Resume
+                            </a>
+                        </Magnetic>
+                    </div>
                 </div>
 
                 <div className="hidden xl:block relative z-[1] w-[420px] shrink-0 slide-up-and-fade">

@@ -2,6 +2,9 @@ import { IProject } from '@/types';
 
 export const SITE_URL = 'https://nameisblank.vercel.app';
 
+// Drop your actual resume PDF at public/resume.pdf — this path just points to it.
+export const RESUME_URL = '/resume.pdf';
+
 export const GENERAL_INFO = {
     email: 'nathancodes05@gmail.com',
 
@@ -18,6 +21,74 @@ export const SOCIAL_LINKS = [
     { name: 'github', url: 'https://github.com/iamnathan-dev' },
     { name: 'linkedin', url: 'https://www.linkedin.com/in/iamnathan-dev' },
     { name: 'twitter', url: 'https://x.com/iamnathan_dev' },
+];
+
+// TODO: replace with real quotes from clients/colleagues (e.g. LinkedIn recommendations).
+// These are placeholders so the section renders — swap the text, name, and role for each.
+export const TESTIMONIALS = [
+    {
+        quote: 'Add a real quote here — 1 to 3 sentences on what it was like working with Nathan.',
+        name: 'Add name',
+        role: 'Role, Company',
+    },
+    {
+        quote: 'Add a second real testimonial here.',
+        name: 'Add name',
+        role: 'Role, Company',
+    },
+    {
+        quote: 'Add a third real testimonial here.',
+        name: 'Add name',
+        role: 'Role, Company',
+    },
+];
+
+export interface IArticle {
+    title: string;
+    slug: string;
+    excerpt: string;
+    date: string;
+    readTime: string;
+    tags: string[];
+    // Omit until a real cover image is ready — the UI reserves the space instead.
+    image?: string;
+    // Full article body, rendered on its own page at /articles/[slug]. Supports
+    // the same lightweight HTML (<br/>, <ul><li>) as project descriptions.
+    content: string;
+}
+
+// TODO: replace with real articles. Each one gets its own page at
+// /articles/[slug] — write the full piece in `content`.
+export const ARTICLES: IArticle[] = [
+    {
+        title: 'Add your article title',
+        slug: 'first-article',
+        excerpt:
+            'Add a 1-2 sentence summary of what this article covers and why it matters.',
+        date: 'Add date',
+        readTime: '5 min read',
+        tags: ['React', 'Next.js'],
+        content:
+            'Replace this with the full article body. Write your real content here — it will render on this article’s own page.',
+    },
+    {
+        title: 'Add a second article title',
+        slug: 'second-article',
+        excerpt: 'Add a summary for this article.',
+        date: 'Add date',
+        readTime: '4 min read',
+        tags: ['TypeScript'],
+        content: 'Replace this with the full article body for your second post.',
+    },
+    {
+        title: 'Add a third article title',
+        slug: 'third-article',
+        excerpt: 'Add a summary for this article.',
+        date: 'Add date',
+        readTime: '6 min read',
+        tags: ['Mobile', 'React Native'],
+        content: 'Replace this with the full article body for your third post.',
+    },
 ];
 
 export const MY_STACK = {
@@ -181,6 +252,14 @@ export const PROJECTS: IProject[] = [
       <li>🧩 Third-Party Integration: Added Swiper.js for sliders and Three.js for 3D challenges</li>
     </ul>
   `,
+        caseStudy: {
+            problem:
+                'Language-learning content tends to feel flat and disengaging, and the team needed a CMS flexible enough for non-technical staff to manage blogs, services, and course content on their own — without every change requiring a developer, and without sacrificing room for rich, interactive lesson experiences.',
+            approach:
+                'Built the platform end-to-end on Next.js with ISR for fast, SEO-friendly page loads, and customized Payload CMS with dedicated collections for blogs, services, and products so editors could manage content independently through a tailored admin interface. Zustand handled client-side state while SWR managed data fetching and caching. On the experience side, Three.js powered interactive 3D language challenges and Swiper.js drove synchronized service carousels, with shadcn and Tailwind CSS keeping the UI consistent throughout.',
+            impact:
+                'Shipped as a live production platform at delve.fun, with a CMS-driven content pipeline that lets non-technical editors publish and update blogs, services, and course material without developer involvement — while interactive 3D challenges and fast ISR-powered pages keep the learning experience itself fast and engaging.',
+        },
         techStack: [
             'Next.js',
             'Three.js',
@@ -263,9 +342,7 @@ export const PROJECTS: IProject[] = [
         title: 'HNG Boilerplate',
         slug: 'hng-boilerplate',
         techStack: ['Next.js', 'TypeScript', 'ESLint', 'Prettier', 'Husky'],
-        thumbnail: '/projects/thumbnail/hng-boilerplate.svg',
-        longThumbnail: '/projects/thumbnail/hng-boilerplate.svg',
-        images: ['/projects/images/hng-boilerplate-1.svg'],
+        images: [],
         year: 2024,
         description:
             'An open-source frontend starter built during the HNG internship to give teams a fast, consistent way to spin up new projects. Ships with a documented library of reusable components and design patterns, plus linting, formatting, and best-practice tooling baked in from the start.',
@@ -278,9 +355,7 @@ export const PROJECTS: IProject[] = [
         title: 'Lovla',
         slug: 'lovla',
         techStack: ['React Native', 'Expo', 'Supabase', 'Zustand'],
-        thumbnail: '/projects/thumbnail/lovla.svg',
-        longThumbnail: '/projects/thumbnail/lovla.svg',
-        images: ['/projects/images/lovla-1.svg'],
+        images: [],
         year: 2025,
         description:
             'Lovla is a cross-platform mobile coloring app built with Expo and React Native. It centers on an interactive coloring canvas with touch-gesture support, letting users select colors, fill regions, and draw freely on a clean, responsive interface optimized for mobile.',

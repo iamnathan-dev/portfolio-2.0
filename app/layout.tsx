@@ -12,6 +12,7 @@ import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/CustomCursor';
 import ScrollToTop from '@/components/ScrollToTop';
 import ChatWidget from '@/components/ChatWidget';
+import CommandPalette from '@/components/CommandPalette';
 import Preloader from '../components/Preloader';
 import StickyEmail from './_components/StickyEmail';
 import { GENERAL_INFO, SITE_URL, SOCIAL_LINKS } from '@/lib/data';
@@ -115,7 +116,26 @@ export default function RootLayout({
             <head>
                 <script
                     dangerouslySetInnerHTML={{
-                        __html: `(function(){try{var s=localStorage.getItem('theme');var t=s||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');if(t==='light')document.documentElement.classList.add('light');}catch(e){}})();`,
+                        __html: `(function(){try{
+    var s=localStorage.getItem('theme');
+    var t=s||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+    var isLight=t==='light';
+    if(isLight)document.documentElement.classList.add('light');
+
+    var PALETTES={
+        green:{dark:['140 100% 47%','0 0% 13%'],light:['140 65% 32%','0 0% 100%']},
+        cyan:{dark:['193 100% 50%','0 0% 13%'],light:['193 85% 30%','0 0% 100%']},
+        purple:{dark:['270 95% 65%','0 0% 13%'],light:['270 75% 38%','0 0% 100%']},
+        orange:{dark:['30 100% 55%','0 0% 13%'],light:['30 90% 35%','0 0% 100%']},
+        pink:{dark:['330 95% 62%','0 0% 13%'],light:['330 80% 38%','0 0% 100%']},
+        red:{dark:['0 90% 60%','0 0% 13%'],light:['0 75% 40%','0 0% 100%']}
+    };
+    var p=localStorage.getItem('palette')||'green';
+    var pal=PALETTES[p]||PALETTES.green;
+    var variant=isLight?pal.light:pal.dark;
+    document.documentElement.style.setProperty('--primary',variant[0]);
+    document.documentElement.style.setProperty('--primary-foreground',variant[1]);
+}catch(e){}})();`,
                     }}
                 />
                 <script
@@ -168,6 +188,7 @@ export default function RootLayout({
                     <StickyEmail />
                     <ScrollToTop />
                     <ChatWidget />
+                    <CommandPalette />
                 </ReactLenis>
             </body>
         </html>

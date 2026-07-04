@@ -15,16 +15,24 @@ export type Variant =
     | 'link'
     | 'no-color';
 
+export interface ICaseStudy {
+    problem: string;
+    approach: string;
+    impact: string;
+}
+
 export interface IProject {
     title: string;
     year: number;
     description: string;
     role: string;
     techStack: string[];
-    thumbnail: string;
-    longThumbnail: string;
+    // Omit when a real screenshot isn't ready yet — the UI reserves the space instead.
+    thumbnail?: string;
+    longThumbnail?: string;
     images: string[];
     slug: string;
     liveUrl?: string;
     sourceCode?: string;
+    caseStudy?: ICaseStudy;
 }
