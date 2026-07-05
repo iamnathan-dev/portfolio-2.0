@@ -6,6 +6,7 @@ import Counter from '@/components/Counter';
 import LiveClock from '@/components/LiveClock';
 import Magnetic from '@/components/Magnetic';
 import ScrambleText from '@/components/ScrambleText';
+import SessionScan from '@/components/SessionScan';
 import { GENERAL_INFO, RESUME_URL } from '@/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -117,6 +118,10 @@ const Banner = () => {
                                 Resume
                             </a>
                         </Magnetic>
+                    </div>
+
+                    <div className="mt-8">
+                        <SessionScan />
                     </div>
                 </div>
 

@@ -3,6 +3,7 @@ import Articles from './_components/Articles';
 import Banner from './_components/Banner';
 import Experiences from './_components/Experiences';
 import GithubActivity from './_components/GithubActivity';
+import RoleFitAnalyzer from './_components/RoleFitAnalyzer';
 import Skills from './_components/Skills';
 import ProjectList from './_components/ProjectList';
 import TechMarquee from './_components/TechMarquee';
@@ -18,6 +19,7 @@ export default function Home() {
             <Experiences />
             <ProjectList />
             <Articles />
+            <RoleFitAnalyzer />
             <Testimonials />
             <GithubActivity />
         </div>

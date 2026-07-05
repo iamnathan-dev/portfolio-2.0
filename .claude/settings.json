@@ -64,7 +64,9 @@
       "Bash(npm root *)",
       "Read(//Users/mac/.npm/_npx/**)",
       "Read(//Users/mac/Library/Caches/ms-playwright/**)",
-      "Bash(node /private/tmp/claude-501/-Users-mac-Documents-code-portfolio-2-0/4cb6a9df-37cc-470f-a04d-52750aa03da7/scratchpad/verify.js)"
+      "Bash(node /private/tmp/claude-501/-Users-mac-Documents-code-portfolio-2-0/4cb6a9df-37cc-470f-a04d-52750aa03da7/scratchpad/verify.js)",
+      "Bash(ls ~/Library/Caches/ms-playwright/ 2>/dev/null)",
+      "Bash(node /private/tmp/claude-501/-Users-mac-Documents-code-portfolio-2-0/4cb6a9df-37cc-470f-a04d-52750aa03da7/scratchpad/check-hero.js)"
     ],
     "additionalDirectories": [
       "/tmp",
