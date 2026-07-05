@@ -145,7 +145,7 @@ const ChatWidget = () => {
 
                 <div
                     ref={scrollRef}
-                    className="flex-1 space-y-3 overflow-y-auto bg-[radial-gradient(hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:16px_16px] px-3.5 py-4 text-sm"
+                    className="min-h-0 flex-1 space-y-3 overflow-y-auto bg-[radial-gradient(hsl(var(--foreground)/0.05)_1px,transparent_1px)] bg-[size:16px_16px] px-3.5 py-4 text-sm"
                 >
                     {messages.length === 0 && (
                         <div className="flex flex-col items-start">

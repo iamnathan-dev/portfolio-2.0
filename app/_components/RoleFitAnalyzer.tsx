@@ -5,7 +5,14 @@ import { GENERAL_INFO, RESUME_URL } from '@/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import { AlertTriangle, Check, Copy, Download, Sparkles } from 'lucide-react';
+import {
+    AlertTriangle,
+    Check,
+    Copy,
+    Download,
+    // Mail,
+    Sparkles,
+} from 'lucide-react';
 import { useRef, useState } from 'react';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -353,6 +360,7 @@ const RoleFitAnalyzer = () => {
                                         variant="primary"
                                         className="text-sm"
                                     >
+                                        {/* <Mail size={14} /> */}
                                         Email Nathan
                                     </Button>
                                     <a

@@ -54,10 +54,15 @@ const Navbar = () => {
                         )
                     }
                     aria-label="Open command palette"
-                    className="hidden sm:flex absolute top-5 right-36 md:right-44 z-[2] items-center gap-1.5 rounded border border-border px-2.5 h-11 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary"
+                    className="hidden sm:flex absolute top-5 left-1/2 -translate-x-1/2 z-[2] w-[200px] md:w-[320px] items-center gap-2.5 rounded-full border border-border bg-background/60 px-4 h-11 font-mono text-xs text-muted-foreground backdrop-blur transition-colors hover:border-primary/60 hover:text-primary"
                 >
-                    <Search size={14} />
-                    <kbd className="text-[10px]">⌘K</kbd>
+                    <Search size={14} className="shrink-0" />
+                    <span className="flex-1 truncate text-left">
+                        Search...
+                    </span>
+                    <kbd className="shrink-0 rounded border border-border px-1.5 py-0.5 text-[10px]">
+                        ⌘K
+                    </kbd>
                 </button>
 
                 <div className="absolute top-5 right-20 md:right-28 z-[2]">

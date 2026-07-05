@@ -179,10 +179,7 @@ const CommandPalette = () => {
                         'light',
                         !isLight,
                     );
-                    localStorage.setItem(
-                        'theme',
-                        !isLight ? 'light' : 'dark',
-                    );
+                    localStorage.setItem('theme', !isLight ? 'light' : 'dark');
                     window.dispatchEvent(new Event('themechange'));
                     close();
                 },
@@ -221,10 +218,7 @@ const CommandPalette = () => {
         window.addEventListener('open-command-palette', handleOpenEvent);
         return () => {
             window.removeEventListener('keydown', handleKeydown);
-            window.removeEventListener(
-                'open-command-palette',
-                handleOpenEvent,
-            );
+            window.removeEventListener('open-command-palette', handleOpenEvent);
         };
     }, [isOpen]);
 
