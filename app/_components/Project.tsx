@@ -84,14 +84,9 @@ const Project = ({ index, project }: Props) => {
         context.kill();
     });
 
-    const isExternal = Boolean(project.liveUrl);
-    const href = project.liveUrl || `/projects/${project.slug}`;
-
     return (
         <Link
-            href={href}
-            target={isExternal ? '_blank' : undefined}
-            rel={isExternal ? 'noopener noreferrer' : undefined}
+            href={`/projects/${project.slug}`}
             className="project-item group relative block rounded-lg border border-border/70 bg-foreground/[0.03] backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/60 hover:-translate-y-1"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

@@ -45,16 +45,16 @@ const Testimonials = () => {
                     {TESTIMONIALS.map((testimonial, i) => (
                         <div
                             key={i}
-                            className="testimonial-card relative rounded-lg border border-border/70 bg-foreground/[0.03] p-6"
+                            className="testimonial-card relative flex h-full flex-col rounded-lg border border-border/70 bg-foreground/[0.03] p-6"
                         >
                             <Quote
                                 size={20}
-                                className="mb-4 text-primary/50"
+                                className="mb-4 shrink-0 text-primary/50"
                             />
                             <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
                                 &ldquo;{testimonial.quote}&rdquo;
                             </p>
-                            <div className="font-mono text-xs">
+                            <div className="mt-auto font-mono text-xs">
                                 <p className="text-foreground">
                                     {testimonial.name}
                                 </p>

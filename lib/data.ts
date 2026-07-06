@@ -23,23 +23,21 @@ export const SOCIAL_LINKS = [
     { name: 'twitter', url: 'https://x.com/iamnathan_dev' },
 ];
 
-// TODO: replace with real quotes from clients/colleagues (e.g. LinkedIn recommendations).
-// These are placeholders so the section renders — swap the text, name, and role for each.
 export const TESTIMONIALS = [
     {
-        quote: 'Add a real quote here — 1 to 3 sentences on what it was like working with Nathan.',
-        name: 'Add name',
-        role: 'Role, Company',
+        quote: "His commitment to excellence stood out — he consistently delivered high-quality work on time and was always ready to lend a hand to the team. Nathaniel has a remarkable ability to solve complex frontend challenges efficiently, and I'm confident he'll exceed expectations in any role he takes on.",
+        name: 'Stephen Adeniji',
+        role: 'Frontend Engineer',
     },
     {
-        quote: 'Add a second real testimonial here.',
-        name: 'Add name',
-        role: 'Role, Company',
+        quote: 'Nathaniel is a relentless frontend web developer. I had the opportunity to work with him on the Delve project during the HNG11 internship.',
+        name: 'Faith Obi',
+        role: 'Fullstack Web Developer',
     },
     {
-        quote: 'Add a third real testimonial here.',
-        name: 'Add name',
-        role: 'Role, Company',
+        quote: "Nathaniel is a great team player — his dedication and willingness to contribute immensely to team projects is excellent. I highly recommend him for any frontend role, knowing he'll deliver way beyond expectations.",
+        name: 'Chioma Okeke',
+        role: 'Frontend Engineer, Minerva Technologies',
     },
 ];
 
@@ -66,6 +64,7 @@ export const ARTICLES: IArticle[] = [
         date: 'Feb 2026',
         readTime: '6 min read',
         tags: ['React', 'Next.js', 'State Management'],
+        image: '/images/article-1.jpg',
         content: `
 Every new React project used to start the same way for me: install Redux, set up a store, wire up RTK Query, and only then write the first component. It felt responsible — like I was building for scale from day one.<br/><br/>
 
@@ -95,6 +94,7 @@ The takeaway isn't "avoid Redux." It's that a state library is a cost you pay up
         slug: 'node-api-error-handling',
         excerpt:
             'Most production API bugs I’ve debugged weren’t logic errors — they were unhandled edge cases in how failures were reported. Here’s the error-handling layer I now build in on day one.',
+        image: '/images/article-2.webp',
         date: 'Apr 2026',
         readTime: '7 min read',
         tags: ['Node.js', 'NestJS', 'API Design'],
@@ -130,6 +130,7 @@ None of this is exotic. It's the unglamorous 20% of backend work that decides wh
         date: 'Jun 2026',
         readTime: '6 min read',
         tags: ['React Native', 'Expo', 'Mobile'],
+        image: '/images/article-3.jpg',
         content: `
 When people ask whether React Native is "good enough" for production, they're usually asking the wrong question. After building and shipping several apps with Expo — from a coloring app with a custom touch-gesture canvas to cross-platform ecosystems handling speech transcription and third-party integrations — the real question is which slice of the app will need to drop closer to native, and whether your architecture makes that easy or painful.<br/><br/>
 
