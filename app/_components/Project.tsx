@@ -87,23 +87,21 @@ const Project = ({ index, project }: Props) => {
     return (
         <Link
             href={`/projects/${project.slug}`}
-            className="project-item group relative block rounded-lg border border-border/70 bg-foreground/[0.03] backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/60 hover:-translate-y-1"
+            className="project-item group relative flex items-center gap-4 sm:gap-6 py-6 pl-4 border-b border-l-2 border-border last:border-b-0 transition-colors hover:border-l-primary"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            {/* HUD corner brackets */}
-            <span className="pointer-events-none absolute -top-px -left-px z-10 h-4 w-4 border-l-2 border-t-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
-            <span className="pointer-events-none absolute -top-px -right-px z-10 h-4 w-4 border-r-2 border-t-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
-            <span className="pointer-events-none absolute -bottom-px -left-px z-10 h-4 w-4 border-b-2 border-l-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
-            <span className="pointer-events-none absolute -bottom-px -right-px z-10 h-4 w-4 border-b-2 border-r-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
+            <span className="hidden sm:flex size-8 shrink-0 items-center justify-center rounded border border-border font-mono text-xs text-muted-foreground transition-colors group-hover:border-primary/50 group-hover:text-primary">
+                {(index + 1).toString().padStart(2, '0')}
+            </span>
 
-            <div className="relative overflow-hidden aspect-[3/2] bg-muted">
+            <div className="relative shrink-0 overflow-hidden rounded-lg aspect-[3/2] w-14 sm:w-20 bg-muted">
                 {project.thumbnail ? (
                     <>
                         {!isImageLoaded && (
                             <div className="absolute inset-0 flex items-center justify-center animate-pulse bg-foreground/[0.06]">
                                 <Loader2
-                                    size={22}
+                                    size={14}
                                     className="animate-spin text-muted-foreground/50"
                                 />
                             </div>
@@ -124,36 +122,20 @@ const Project = ({ index, project }: Props) => {
                 ) : (
                     <div className="absolute inset-0 flex items-center justify-center border border-dashed border-border/60">
                         <ImageOff
-                            size={22}
+                            size={14}
                             className="text-muted-foreground/30"
                         />
                     </div>
                 )}
-
-                {/* tech grid overlay */}
-                <div
-                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-[linear-gradient(hsl(var(--primary)/0.16)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary)/0.16)_1px,transparent_1px)] bg-[size:22px_22px]"
-                />
-
-                {/* shine sweep */}
-                <span className="pointer-events-none absolute inset-y-0 left-0 w-1/3 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[400%]" />
-
-                <span className="absolute top-3 left-3 rounded border border-primary/30 bg-background/80 backdrop-blur px-2 py-1 font-mono text-[10px] text-primary">
-                    {project.year}
-                </span>
             </div>
 
-            <div className="relative p-5">
-                <div className="flex items-center gap-2 font-mono text-[11px] tracking-wider text-muted-foreground">
-                    <span className="relative flex size-1.5">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                        <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
-                    </span>
-                    {(index + 1).toString().padStart(2, '0')}
-                </div>
+            <div className="min-w-0 flex-1">
+                <p className="font-mono text-xs text-muted-foreground tracking-wide">
+                    {project.year}
+                </p>
 
-                <div className="mt-2 flex items-center justify-between gap-3 leading-none">
-                    <h4 className="text-xl sm:text-2xl font-anton transition-colors group-hover:text-primary">
+                <div className="mt-1 flex items-center justify-between gap-3 leading-none">
+                    <h4 className="truncate text-xl sm:text-2xl font-anton transition-colors group-hover:text-primary">
                         {project.title}
                     </h4>
                     <span className="text-foreground opacity-0 group-hover:opacity-100 transition-all shrink-0">
@@ -179,7 +161,13 @@ const Project = ({ index, project }: Props) => {
                     </span>
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                {project.description && (
+                    <p className="mt-1.5 max-w-xl line-clamp-2 text-sm text-muted-foreground">
+                        {project.description}
+                    </p>
+                )}
+
+                <div className="mt-3 flex flex-wrap gap-1.5">
                     {project.techStack.slice(0, 3).map((tech) => (
                         <Chip
                             key={tech}

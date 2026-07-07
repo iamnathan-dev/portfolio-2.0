@@ -1,6 +1,7 @@
 'use client';
 import SectionTitle from '@/components/SectionTitle';
 import { MY_STACK } from '@/lib/data';
+import { cn } from '@/lib/utils';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -19,18 +20,23 @@ const Skills = () => {
 
             if (!slideUpEl?.length) return;
 
-            gsap.from('.slide-up', {
-                opacity: 0,
-                y: 30,
-                duration: 0.5,
-                ease: 'power2.out',
-                stagger: 0.03,
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
+            gsap.fromTo(
+                '.slide-up',
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'power2.out',
+                    stagger: 0.03,
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                        once: true,
+                    },
                 },
-            });
+            );
         },
         { scope: containerRef },
     );
@@ -60,7 +66,12 @@ const Skills = () => {
                                             alt={`${item.name} logo`}
                                             width="20"
                                             height="20"
-                                            className="size-5"
+                                            className={cn(
+                                                'size-5',
+                                                'invertInLight' in item &&
+                                                    item.invertInLight &&
+                                                    '[html.light_&]:invert',
+                                            )}
                                         />
                                         <span className="font-mono text-xs tracking-wide">
                                             {item.name}

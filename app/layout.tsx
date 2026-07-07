@@ -15,6 +15,7 @@ import ChatWidget from '@/components/ChatWidget';
 import ColorPaletteToggle from '@/components/ColorPaletteToggle';
 import CommandPalette from '@/components/CommandPalette';
 import Preloader from '../components/Preloader';
+import LenisScrollSync from '@/components/LenisScrollSync';
 import StickyEmail from './_components/StickyEmail';
 import { GENERAL_INFO, SITE_URL, SOCIAL_LINKS } from '@/lib/data';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -166,8 +167,10 @@ export default function RootLayout({
                     options={{
                         lerp: 0.1,
                         duration: 1.4,
+                        autoRaf: false,
                     }}
                 >
+                    <LenisScrollSync />
                     {/* <a
                         href="https://forms.gle/t73XYJgWD5cJNr6e8"
                         target="_blank"

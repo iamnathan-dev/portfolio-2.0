@@ -254,6 +254,7 @@ export const MY_STACK = {
         {
             name: 'GitHub',
             icon: '/logo/github.png',
+            invertInLight: true,
         },
         // {
         //     name: 'Xcode',
@@ -270,183 +271,211 @@ export const MY_STACK = {
         {
             name: 'Docker',
             icon: '/logo/docker.svg',
+            invertInLight: true,
         },
     ],
 };
 
 export const PROJECTS: IProject[] = [
     {
-        title: 'Delve',
-        slug: 'delve',
-        liveUrl: 'https://delve.fun/',
-        year: 2024,
-        description: `
-    A fun language learning platform that elevates your experience through interactive 3D challenges and engaging content. <br/> <br/>
-    
-    Key Features:<br/>
-    <ul>
-      <li>🤖 AI-Generated Conversations: Simulated dialogue practice for real-world vocabulary building</li>
-      <li>📊 Progress Dashboard: Tracks learning history and surfaces dynamic lessons based on it</li>
-      <li>🎮 Interactive 3D Challenges: Immersive language exercises powered by Three.js</li>
-      <li>🛠️ Service Showcase: Dynamic service display with synchronized sliders</li>
-      <li>✍️ Blog Management: SEO-optimized blog with categorization, search, and dynamic meta tags</li>
-      <li>🛒 Product Catalog: Organized course and resource display with advanced filtering</li>
-      <li>📱 Fully Responsive: Seamless experience across all device sizes</li>
-      <li>⚡ Fast Performance: Optimized Next.js frontend with ISR for rapid load times</li>
-    </ul><br/>
-    
-    Technical Highlights:
-    <ul>
-      <li>Built synchronized slider logic with Swiper.js for engaging service showcases</li>
-      <li>Customized Payload CMS for intuitive management of blogs, services, and products</li>
-      <li>Developed reusable UI components with shadcn and Tailwind CSS for consistent design</li>
-      <li>Implemented efficient data fetching with Next.js ISR and SWR for dynamic content</li>
-      <li>Integrated Three.js for interactive 3D learning challenges</li>
-    </ul>
-  `,
-        role: `
-    Full-Stack Developer <br/>
-    Owned the entire development lifecycle:
-    <ul>
-      <li>✅ Backend: Configured Payload CMS with custom collections for services, blogs, and products</li>
-      <li>🎨 Frontend: Built responsive UI components using Tailwind CSS and shadcn</li>
-      <li>🔄 State Management: Used Zustand for client-side state and SWR for data fetching/caching</li>
-      <li>🖥️ CMS Customization: Designed admin interfaces for content editors</li>
-      <li>🚀 Deployment: Set up CI/CD pipeline for Vercel hosting</li>
-      <li>🧩 Third-Party Integration: Added Swiper.js for sliders and Three.js for 3D challenges</li>
-    </ul>
-  `,
-        caseStudy: {
-            problem:
-                'Language-learning content tends to feel flat and disengaging, and the team needed a CMS flexible enough for non-technical staff to manage blogs, services, and course content on their own — without every change requiring a developer, and without sacrificing room for rich, interactive lesson experiences.',
-            approach:
-                'Built the platform end-to-end on Next.js with ISR for fast, SEO-friendly page loads, and customized Payload CMS with dedicated collections for blogs, services, and products so editors could manage content independently through a tailored admin interface. Zustand handled client-side state while SWR managed data fetching and caching. On the experience side, Three.js powered interactive 3D language challenges and Swiper.js drove synchronized service carousels, with shadcn and Tailwind CSS keeping the UI consistent throughout.',
-            impact:
-                'Shipped as a live production platform at delve.fun, with a CMS-driven content pipeline that lets non-technical editors publish and update blogs, services, and course material without developer involvement — while interactive 3D challenges and fast ISR-powered pages keep the learning experience itself fast and engaging.',
-        },
-        techStack: [
-            'Next.js',
-            'Three.js',
-            'Tailwind CSS',
-            'shadcn',
-            'Zustand',
-            'React Hook Form',
-            'SWR',
-            'Swiper.js',
-            'Payload CMS',
-        ],
+        title: '9lives',
+        slug: '9lives',
+        liveUrl:
+            'https://apps.apple.com/ng/app/9lives-social-productivity/id6752275333',
+        thumbnail:
+            'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/55/dc/9f/55dc9fc3-927c-5cb5-784c-c0b3d7ed91ea/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1200x630wa.jpg',
+        techStack: [],
         images: [],
-    },
-    {
-        title: 'Resume Roaster',
-        slug: 'resume-roaster',
-        techStack: ['Next.js', 'PostgreSQL', 'GPT-4', 'Tailwind CSS'],
-        images: [],
-        liveUrl: 'https://resume-roaster.vercel.app/',
-        year: 2024,
-        description:
-            'Resume Roaster is a web application designed to provide tailored resume feedback and professional writing services. Built with Next.js, PostgreSQL, Prisma, and Tailwind CSS, it integrates GPT-4 for AI-powered recommendations. The platform also includes peer-to-peer reviews with a points-based system, fostering a collaborative and engaging experience. Targeting freshers, experienced professionals, and programmers, it helps optimize resumes for job-specific success.',
-        role: `As the sole developer and business owner, I:<br/>
-        - Designed and developed the platform end-to-end using Next.js, PostgreSQL, Prisma, and Tailwind CSS.<br/>
-        - Integrated GPT-4 for AI-driven feedback and insights.<br/>
-        - Implemented complex SQL queries, including one to identify the top two resumes based on user points.`,
-        caseStudy: {
-            problem:
-                'Generic resume advice — templates and one-size-fits-all checklists — rarely tells a candidate what\'s actually wrong with their specific resume, and professional human review is expensive and slow. Freshers and career-changers in particular had no fast, affordable way to get specific, actionable feedback before applying.',
-            approach:
-                'Built the platform solo, end-to-end, on Next.js, PostgreSQL, and Prisma, with GPT-4 integrated to generate structured, section-by-section feedback instead of generic commentary. Added a peer-to-peer review layer with a points-based incentive system so users could exchange feedback on each other\'s resumes and earn credits toward AI-powered rewrites, keeping the platform useful even before it had a large paying user base. Wrote the SQL layer directly, including a query to surface the top two highest-rated resumes per experience bracket for a leaderboard feature.',
-            impact:
-                'Shipped and deployed to production as a live, publicly usable tool at resume-roaster.vercel.app, pairing AI feedback with a self-sustaining peer-review loop — giving freshers and professionals fast, specific resume feedback without paying a human reviewer or waiting days for a response.',
-        },
-    },
-    {
-        title: 'EpikCart',
-        slug: 'epikcart',
-        techStack: ['React.js', 'Tailwind CSS', 'Redux', 'React Hook Form'],
-        images: [],
-        liveUrl: 'https://demo.epikcart.siphertech.com/',
         year: 2025,
         description:
-            'EpikCart is a multi-vendor e-commerce storefront demo built to showcase product discovery, cart management, and checkout at scale — with admin-configurable filtering and multi-language support for a global vendor base.',
-        role: `As the frontend developer in a team of ten, I: <br/>
-        - Built new frontend components using React, Redux, RTK Query, and Tailwind CSS.<br/>
-        - Developed dynamic filtering logic for the product search page with admin-configurable parameters.<br/>
-        - Integrated multi-language support with React i18n, including RTL handling.<br/>
-        - Delivered a responsive, user-friendly interface in collaboration with the UI/UX designer.`,
+            '9lives blends productivity and social accountability — notes, lists, and folders with AI-assisted note enhancement, flashcard conversion, and image-to-text scanning, plus a social layer for sharing progress and keeping daily streaks.',
+        role: 'Software Engineer, contributing across both the web and mobile app — built authentication flows and worked on database optimization.',
         caseStudy: {
-            problem:
-                'A multi-vendor storefront needs product filtering flexible enough for admins to reconfigure per category without a redeploy, cart and checkout state that stays consistent across dozens of unrelated screens, and a UI that reads naturally in more than one language and text direction — three requirements that are easy to get right individually and hard to get right together.',
-            approach:
-                'As the frontend developer on a ten-person team, I built new UI components in React and Tailwind CSS, and implemented dynamic filtering logic for the product search page driven entirely by admin-configurable parameters rather than hardcoded filter sets. Redux held the shared cart, filter, and auth state that a dozen unrelated screens needed to read and mutate consistently, while React Hook Form handled validated checkout and account forms. Multi-language support, including full RTL handling for right-to-left locales, was wired in with React i18n.',
-            impact:
-                'Delivered a responsive, production-ready storefront experience in close collaboration with the UI/UX designer, with filtering and cart logic robust enough to support a genuinely multi-vendor, multi-language catalog rather than a single hardcoded storefront.',
-        },
-    },
-    {
-        title: 'Oversabi',
-        slug: 'property-pro',
-        techStack: ['Next.js', 'Tailwind CSS', 'GPT-4', 'React i18n'],
-        images: [],
-        liveUrl: 'https://buzz-six-lime.vercel.app/',
-        year: 2023,
-        description:
-            'Oversabi is a real estate management platform offering users a seamless experience to explore, manage, and view property listings. The application emphasizes accessibility and responsive design, ensuring a smooth interface across devices.',
-        role: `As the frontend developer, I:<br/>
-        - Built the frontend using React, Redux, RTK Query, Framer Motion, and Tailwind CSS.<br/>
-        - Integrated dynamic state management for efficient handling of property data.<br/>
-        - Implemented multi-language support with React i18n to cater to diverse audiences.<br/>
-        - Enhanced user interaction with animations and transitions using Framer Motion.`,
-        caseStudy: {
-            problem:
-                'Property listings involve dense, filterable data — price, location, amenities, availability — that needs to stay fast and legible on mobile, while serving a user base spread across regions that don\'t all read the same language.',
-            approach:
-                'Built the frontend using React, Redux, RTK Query, Framer Motion, and Tailwind CSS, with dynamic state management keeping property data — filters, saved listings, comparison views — in sync as users browsed. Framer Motion powered transitions between listing and detail views to keep the experience feeling responsive rather than jumpy on slower connections, and React i18n added multi-language support so the platform wasn\'t limited to a single-language audience.',
-            impact:
-                'Shipped a production real estate platform where property discovery stays fast and accessible on mobile, with multi-language support and animated transitions that make browsing dense listing data feel considerably lighter than a typical property portal.',
-        },
-    },
-    {
-        title: 'HNG Boilerplate',
-        slug: 'hng-boilerplate',
-        techStack: ['Next.js', 'TypeScript', 'ESLint', 'Prettier', 'Husky'],
-        images: [],
-        year: 2024,
-        description:
-            'An open-source frontend starter built during the HNG internship to give teams a fast, consistent way to spin up new projects. Ships with a documented library of reusable components and design patterns, plus linting, formatting, and best-practice tooling baked in from the start.',
-        role: `As the maintainer, I:<br/>
-        - Built and documented reusable components and design patterns for the starter kit.<br/>
-        - Integrated linting, formatting, and best practices for rapid onboarding.<br/>
-        - Supported adoption by multiple teams during the HNG internship for faster setup and consistent code quality.`,
-        caseStudy: {
-            problem:
-                'Every new project during the HNG internship started with the same setup tax — linting config, formatting rules, component patterns, git hooks — repeated from scratch by every team, which meant inconsistent code quality and the first few days of every cohort spent re-solving already-solved problems.',
-            approach:
-                'Built and maintained an open-source Next.js and TypeScript starter with a documented library of reusable components and design patterns, plus ESLint, Prettier, and Husky pre-commit hooks configured out of the box so a new team could enforce code quality from commit one instead of retrofitting it later. Documentation covered the components themselves, not just the setup, so teams could actually discover and reuse what was already built instead of rewriting it.',
-            impact:
-                'Adopted by multiple teams during the HNG internship, cutting new-project setup time from days to under an hour and giving otherwise independent cohorts a consistent baseline of code quality and component reuse.',
+            problem: 'A productivity app and a social app usually pull in opposite directions — one wants a quiet, private workspace, the other wants activity worth sharing. 9lives set out to do both at once, across a web and a mobile app hitting the same backend, which meant auth and data access had to behave identically on both surfaces.',
+            approach: 'Focused on the authentication layer — building login flows that work the same way whether a user is on web or mobile — and on database optimization as the note, folder, and streak data grew. That backend work sits underneath the AI-assisted features (note enhancement, flashcard generation, image-to-text scanning) and the social layer (progress sharing, streaks) that make up the rest of the product.',
+            impact: 'Shipped as a live iOS app under Benekan Technologies, with an auth and data layer built to hold up consistently across both the web and mobile clients rather than diverging between platforms.',
         },
     },
     {
         title: 'Lovla',
         slug: 'lovla',
+        liveUrl:
+            'https://apps.apple.com/gb/app/lovla-couples-coloring-games/id6758548454',
+        thumbnail:
+            'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9c/10/e0/9c10e044-2dd6-7c45-92cb-f311e1839554/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1200x630wa.png',
         techStack: ['React Native', 'Expo', 'Supabase', 'Zustand'],
         images: [],
         year: 2025,
         description:
-            'Lovla is a cross-platform mobile coloring app built with Expo and React Native. It centers on an interactive coloring canvas with touch-gesture support, letting users select colors, fill regions, and draw freely on a clean, responsive interface optimized for mobile.',
-        role: `As the developer, I:<br/>
-        - Built the mobile application using Expo and React Native, ensuring cross-platform compatibility for iOS and Android.<br/>
-        - Implemented an interactive coloring canvas with touch gestures for selecting colors, filling regions, and freehand drawing.<br/>
-        - Designed a clean, responsive UI optimized for mobile devices.<br/>
-        - Integrated a customizable color palette system.`,
+            'Lovla turns personal photos into custom coloring pages that couples paint together in real time, with a private journal that builds into a shared library of finished art and memories.',
+        role: 'Contributed to both the web and mobile app — built the mobile app with Expo and React Native, including the real-time collaborative coloring canvas and the palette system.',
         caseStudy: {
-            problem:
-                'Coloring apps are simple in concept but unforgiving in execution on mobile — freehand drawing and fill-region interactions need to feel instant under touch, and doing that across both iOS and Android from one codebase without native-level lag is a real constraint, not a given.',
-            approach:
-                'Built cross-platform with Expo and React Native for iOS/Android parity, backing the app with Supabase for data and Zustand for lightweight client state rather than a heavier store, since the state graph — active palette, canvas history, saved works — didn\'t need Redux-level machinery. The interactive coloring canvas needed lower-level gesture and touch handling beyond what standard components offered, to keep fill-region and freehand drawing responsive rather than laggy on mid-range Android devices, which is where performance problems tend to surface first.',
-            impact:
-                'Shipped a smooth, cross-platform coloring experience with a responsive touch canvas and a customizable color palette system, proving that gesture-heavy custom interactions are achievable in a managed Expo workflow without dropping to bare React Native.',
+            problem: "Two people painting the same coloring page at once needs to actually feel synchronous, not like a shared file one person edits at a time — on top of turning an arbitrary user photo into paintable line art, and keeping that experience consistent across both a web and mobile app.",
+            approach: "Built the mobile app cross-platform with Expo and React Native, with Supabase handling data and sync so both partners' strokes land on the same canvas without one side lagging or overwriting the other. Zustand held lightweight client state — active palette, in-progress strokes, saved works — rather than a heavier store, since the state graph didn't need Redux-level machinery. Also contributed to the companion web app so the coloring and journaling experience didn't diverge between platforms.",
+            impact: 'Shipped as a live, subscription-based app that turns photos into coloring pages couples paint together in real time, with a private journal of finished art as a byproduct of actually using the product.',
         },
+    },
+    {
+        title: 'ClinicSight',
+        slug: 'clinicsight',
+        liveUrl: 'https://useclinsight.com/',
+        thumbnail: 'https://useclinsight.com/clinsight-favicon.svg',
+        techStack: [],
+        images: [],
+        year: 2025,
+        description:
+            'Clinsight is an AI-powered platform that turns medical laboratory reports into clear, understandable explanations — patients upload a PDF or image of their results and get a structured breakdown with color-coded risk levels, plus optional review by qualified healthcare professionals. Ships as iOS and Android applications alongside the web app, already serving 1,000+ users.',
+        role: 'Team lead for the iOS and Android application.',
+        caseStudy: {
+            problem: "Lab reports are dense and full of values that mean nothing to most patients without a medical background, so the core problem was making that data actually understandable — while being honest about the fact that an AI reading a lab report can be wrong, and this isn't a domain where 'probably right' is good enough. On top of that, whatever the AI produced (a plain-language summary, a risk level, suggested follow-up questions) had to show up identically on iOS and Android, not as two apps that happened to share a backend.",
+            approach: "As team lead for the iOS and Android apps, owned getting both platforms to consistently implement the same result-interpretation flow: upload a lab report as a PDF or image, surface the AI's structured breakdown — a one-sentence bottom line, color-coded risk indicators (Low/Moderate/High), and context-aware suggested follow-up questions — and route flagged or uncertain results into review by a qualified healthcare professional rather than presenting the AI's read as final. That review loop isn't just a UI state; corrections doctors make feed back into improving the AI's accuracy, which meant the apps needed a real 'pending professional review' and 'corrected result' state, not just a single AI-verdict screen. Kept both platforms in feature parity release over release rather than letting one lag, since a mismatched risk reading between iOS and Android on health data isn't an acceptable inconsistency.",
+            impact: "Shipped as two live production apps on the App Store and Google Play alongside the web product, part of a system already serving 1,000+ users — with a mobile experience trustworthy enough to carry medical risk indicators and route people to real clinicians when the AI isn't confident enough to be the last word.",
+        },
+    },
+    {
+        title: 'Ellum',
+        slug: 'ellum',
+        liveUrl: 'https://www.ellum.ai/',
+        thumbnail: 'https://www.ellum.ai/ellum-banner.webp',
+        techStack: [],
+        images: [],
+        year: 2025,
+        description:
+            'Ellum is a SaaS platform providing AI agents for social media management and marketing automation — generating content, scheduling posts across LinkedIn, Instagram, X, Facebook, and TikTok, and tracking real-time analytics while keeping brand guidelines consistent across a team.',
+        role: 'Mobile Developer.',
+        caseStudy: {
+            problem: "Marketing and content teams don't manage social accounts from a desk — approvals, quick edits, and checking how a post is performing happen wherever the person happens to be. Ellum's core value is AI agents that generate on-brand content, keep a shared posting calendar, and route drafts through role-based approval before anything goes out; none of that is useful if it's locked to a browser tab someone has to be sitting in front of.",
+            approach: "As mobile developer, worked on bringing that same workflow to a native mobile client — AI-assisted content generation, the shared scheduling calendar, and the team approval flow (assign roles, review drafts, approve or send back) — backed by the same AI agents that generate content from a central brand-guidelines profile, so a post drafted or approved from mobile is held to the same brand consistency as one done on web. Real-time analytics across the connected platforms (Facebook, Instagram, X, LinkedIn, TikTok) needed to be legible on a phone screen, not just a repurposed desktop dashboard.",
+            impact: "Contributed to the mobile side of a platform that has connected accounts reaching 3.1M+ in aggregate audience, generated 1.5M+ pieces of content, and serves 450K+ clients — extending Ellum's AI-assisted content and approval workflow beyond the browser to wherever a team actually is when a post needs a decision.",
+        },
+    },
+    {
+        title: 'Evoolv',
+        slug: 'evoolv',
+        liveUrl: 'https://www.evoolv.com/',
+        thumbnail: 'https://www.evoolv.com/evoolv.svg',
+        techStack: [],
+        images: [],
+        year: 2025,
+        description:
+            'Evoolv is an electric vehicle marketplace for Nigeria, facilitating the purchasing and financing of EVs through an integrated platform.',
+        role: '',
+    },
+    {
+        title: 'Terminal Portfolio',
+        slug: 'terminal-portfolio',
+        liveUrl: 'https://blank-codes.xyz/',
+        thumbnail: 'https://blank-codes.xyz/og-image.png',
+        techStack: [],
+        images: [],
+        year: 2023,
+        description:
+            'My previous portfolio — a fully interactive terminal emulator instead of a static page. A scripted boot sequence and ASCII banner lead into a real command interpreter: `about` prints a JSON profile, `skills` and `experience` read like a `cat`\'d file and a `git log`, `projects` lists real project links, and `chat` holds a conversation as an AI version of me. A `ui` command swaps the whole thing for a retro GUI landing page for anyone who\'d rather not type.',
+        role: 'Sole developer and designer.',
+        caseStudy: {
+            problem: "A static portfolio blurs into every other developer's site — same hero, same project grid, same about-me paragraph. The goal was something a technical visitor would actually engage with rather than skim past, without losing the core job of a portfolio: surfacing real projects and experience.",
+            approach: "Built the entire landing experience as a simulated shell — a scripted boot sequence and ASCII banner feeding into a REPL-style command interpreter. Instead of static sections, visitors type `about`, `skills`, or `experience` and get back JSON-formatted profile data and a `git log`-styled career history; `projects` lists real, linked work. A `chat` command holds a conversation as an AI version of me, and a `ui` command drops into an entirely different retro GUI presentation for visitors who'd rather click than type.",
+            impact: "Landed as a distinctive, fully interactive personal site that reads as a small piece of software in its own right — command history, a scripted boot sequence, an AI chat mode, and two different presentation modes behind one experience — rather than another static one-pager.",
+        },
+    },
+    {
+        title: 'Runwae',
+        slug: 'runwae',
+        liveUrl: 'https://www.runwae.io/',
+        techStack: ['React', 'Node.js'],
+        images: [],
+        year: 2026,
+        description:
+            'Runwae streamlines group travel planning — friends collaboratively build itineraries, book flights and hotels together, and automatically split shared expenses, available on web, iOS, and Android.',
+        role: 'Full-Stack Engineer — built the React frontend, Node.js backend, and real-time features.',
+        caseStudy: {
+            problem: 'Coordinating a group trip usually means a scattered mix of group chats, spreadsheets, and separate booking receipts — someone ends up manually reconciling who paid for what after the fact, with no single source of truth for the itinerary everyone actually agreed on.',
+            approach: "Built the React frontend and Node.js backend, with real-time features so a group's itinerary, bookings, and expense splits stay in sync as multiple people edit them concurrently, instead of requiring someone to refresh and manually merge changes.",
+            impact: 'Shipped as a live product across web and mobile that consolidates itinerary planning, group booking, and automatic expense splitting into one real-time experience, replacing the group-chat-plus-spreadsheet workflow most trips default to.',
+        },
+    },
+    {
+        title: 'Task Management API',
+        slug: 'task-management-api',
+        sourceCode: 'https://github.com/iamnathan-dev/task-management-api',
+        thumbnail:
+            'https://opengraph.githubassets.com/1/iamnathan-dev/task-management-api',
+        techStack: ['TypeScript'],
+        images: [],
+        year: 2025,
+        description: 'A backend REST API for managing tasks, built in TypeScript.',
+        role: 'Sole developer.',
+    },
+    {
+        title: 'Auth Microservice',
+        slug: 'auth-microservice',
+        sourceCode: 'https://github.com/iamnathan-dev/auth-microservice',
+        thumbnail:
+            'https://opengraph.githubassets.com/1/iamnathan-dev/auth-microservice',
+        techStack: ['NestJS', 'TypeScript'],
+        images: [],
+        year: 2025,
+        description:
+            'A standalone authentication microservice built with NestJS and TypeScript.',
+        role: 'Sole developer.',
+    },
+    {
+        title: 'Express URL Shortener API',
+        slug: 'express-url-shortener-api',
+        sourceCode:
+            'https://github.com/iamnathan-dev/express-url-shortener-api',
+        thumbnail:
+            'https://opengraph.githubassets.com/1/iamnathan-dev/express-url-shortener-api',
+        techStack: ['Express.js', 'TypeScript', 'MongoDB', 'Redis', 'Docker'],
+        images: [],
+        year: 2025,
+        description:
+            'A URL shortener API handling 10,000+ redirects a day, with custom aliases, click analytics, rate limiting, and Redis caching in front of the hot redirect path.',
+        role: 'Sole developer.',
+        caseStudy: {
+            problem: 'A URL shortener looks trivial until it has to survive real traffic — the redirect endpoint is the hot path and needs to stay fast under load, abuse and scraping need rate limiting, and every shortened link needs to track clicks without slowing the redirect itself down.',
+            approach: 'Built on Express and TypeScript with controllers, services, models, and routes kept as separate layers so the URL-shortening logic stayed independent of HTTP handling. MongoDB stores the URL mappings and click data, while Redis sits in front as a cache for the hot redirect-lookup path, keeping the common case — resolving a short code — fast without hitting the database on every request. Rate-limiting middleware protects the creation endpoint from abuse, and the app ships with a Dockerfile and docker-compose setup so the API and Redis spin up together in one command.',
+            impact: 'Handles over 10,000 redirects a day, with Redis caching absorbing the read load on top of the core shorten-and-redirect flow, plus custom aliases and click analytics.',
+        },
+    },
+    {
+        title: 'TeamFlow',
+        slug: 'multi-tenant-saas-api',
+        sourceCode: 'https://github.com/iamnathan-dev/multi-tenant-saas-api',
+        thumbnail:
+            'https://opengraph.githubassets.com/1/iamnathan-dev/multi-tenant-saas-api',
+        techStack: [
+            'Node.js',
+            'Express.js',
+            'TypeScript',
+            'PostgreSQL',
+            'Prisma',
+            'Redis',
+            'Docker',
+        ],
+        images: [],
+        year: 2025,
+        description:
+            'TeamFlow is a production-grade multi-tenant SaaS backend for team collaboration platforms — organizations, projects, tasks, members, and permissions, with strict tenant-level data isolation.',
+        role: 'Sole developer.',
+        caseStudy: {
+            problem: "A multi-tenant SaaS backend has to solve several hard problems at once: strict data isolation between organizations sharing the same database, an authorization model expressive enough for real permission checks rather than just 'admin vs. user', and enough operational maturity — audit logs, background jobs, rate limiting — to behave like something that could run in production rather than a CRUD demo.",
+            approach: "Built on Node.js, Express, and TypeScript, with PostgreSQL and Prisma as the data layer and tenant isolation enforced at the organization boundary — users can belong to multiple organizations, but every query is scoped to one. Authorization combines role-based access control (Owner/Admin/Member) with permission-based checks (`project:create`, `task:update`, `member:invite`) enforced via middleware, instead of hardcoding role checks into every route. JWT access and refresh tokens handle sessions, with refresh token rotation and OAuth (Google, GitHub) as alternate entry points, plus per-device session tracking. Redis backs both a queue for background jobs — sending emails, cleaning expired tokens, audit logging — and a cache for permissions, memberships, and project lookups, since those get read far more often than they change. Webhooks with signed payloads and retries let external systems subscribe to events like `task.created`.",
+            impact: 'A backend that demonstrates real production patterns end-to-end — tenant isolation, RBAC and PBAC, token rotation, queued background work, audit logging, and subscription-tier limits — rather than a simplified CRUD API.',
+        },
+    },
+    {
+        title: 'News Web Scrapper',
+        slug: 'news-web-scrapper',
+        sourceCode: 'https://github.com/iamnathan-dev/news-web-scrapper',
+        thumbnail:
+            'https://opengraph.githubassets.com/1/iamnathan-dev/news-web-scrapper',
+        techStack: ['NestJS', 'TypeScript'],
+        images: [],
+        year: 2025,
+        description:
+            'A web scraper for aggregating news content, built with NestJS and TypeScript.',
+        role: 'Sole developer.',
     },
 ];
 

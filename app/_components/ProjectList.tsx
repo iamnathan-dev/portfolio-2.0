@@ -14,18 +14,23 @@ const ProjectList = () => {
 
     useGSAP(
         () => {
-            gsap.from('.project-item', {
-                y: 30,
-                opacity: 0,
-                duration: 0.5,
-                stagger: 0.06,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: gridRef.current,
-                    start: 'top 95%',
-                    toggleActions: 'play none none none',
+            gsap.fromTo(
+                '.project-item',
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    stagger: 0.06,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: gridRef.current,
+                        start: 'top 95%',
+                        toggleActions: 'play none none none',
+                        once: true,
+                    },
                 },
-            });
+            );
         },
         { scope: gridRef },
     );
@@ -43,10 +48,7 @@ const ProjectList = () => {
                     classNames={{ title: 'font-mono tracking-widest' }}
                 />
 
-                <div
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-                    ref={gridRef}
-                >
+                <div className="flex flex-col" ref={gridRef}>
                     {PROJECTS.map((project, index) => (
                         <Project
                             index={index}

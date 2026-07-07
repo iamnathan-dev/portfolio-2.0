@@ -17,18 +17,23 @@ const Articles = () => {
 
     useGSAP(
         () => {
-            gsap.from('.article-card', {
-                y: 30,
-                opacity: 0,
-                duration: 0.5,
-                stagger: 0.1,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
+            gsap.fromTo(
+                '.article-card',
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    stagger: 0.1,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                        once: true,
+                    },
                 },
-            });
+            );
         },
         { scope: containerRef },
     );

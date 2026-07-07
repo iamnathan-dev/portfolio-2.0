@@ -8,8 +8,9 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { ArrowLeft, ExternalLink, Github, ImageOff } from 'lucide-react';
+import { useLenis } from 'lenis/react';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Props {
     project: IProject;
@@ -19,6 +20,12 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const ProjectDetails = ({ project }: Props) => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const lenis = useLenis();
+
+    useEffect(() => {
+        lenis?.scrollTo(0, { immediate: true });
+        window.scrollTo(0, 0);
+    }, [lenis, project.slug]);
 
     useGSAP(
         () => {
@@ -217,14 +224,30 @@ const ProjectDetails = ({ project }: Props) => {
                     className="fade-in-later relative flex flex-col gap-2 max-w-[800px] mx-auto"
                     id="images"
                 >
-                    {project.images.length === 0 && (
-                        <div className="flex w-full items-center justify-center border border-dashed border-border/60 rounded-md aspect-[750/400]">
-                            <ImageOff
-                                size={28}
-                                className="text-muted-foreground/30"
-                            />
-                        </div>
-                    )}
+                    {project.images.length === 0 &&
+                        (project.thumbnail ? (
+                            <div className="group relative w-full aspect-[750/400] bg-background-light rounded-md overflow-hidden border border-border/70">
+                                <Image
+                                    src={project.thumbnail}
+                                    alt={`${project.title} preview`}
+                                    fill
+                                    sizes="(max-width: 800px) 100vw, 800px"
+                                    className="parallax-image scale-110 object-cover"
+                                    loading="lazy"
+                                />
+                                <span className="pointer-events-none absolute -top-px -left-px h-4 w-4 border-l-2 border-t-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
+                                <span className="pointer-events-none absolute -top-px -right-px h-4 w-4 border-r-2 border-t-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
+                                <span className="pointer-events-none absolute -bottom-px -left-px h-4 w-4 border-b-2 border-l-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
+                                <span className="pointer-events-none absolute -bottom-px -right-px h-4 w-4 border-b-2 border-r-2 border-transparent transition-colors duration-300 group-hover:border-primary" />
+                            </div>
+                        ) : (
+                            <div className="flex w-full items-center justify-center border border-dashed border-border/60 rounded-md aspect-[750/400]">
+                                <ImageOff
+                                    size={28}
+                                    className="text-muted-foreground/30"
+                                />
+                            </div>
+                        ))}
                     {project.images.map((image, idx) => (
                         <div
                             key={image}

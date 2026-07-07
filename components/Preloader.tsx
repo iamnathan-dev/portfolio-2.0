@@ -21,15 +21,15 @@ const Preloader = () => {
             tl.from('.preloader-line', {
                 autoAlpha: 0,
                 y: 10,
-                stagger: 0.12,
-                duration: 0.3,
+                stagger: 0.06,
+                duration: 0.2,
             });
 
             tl.to(
                 counter,
                 {
                     value: 100,
-                    duration: 1.2,
+                    duration: 0.6,
                     ease: 'power2.inOut',
                     onUpdate: () => {
                         const rounded = Math.round(counter.value);
@@ -41,22 +41,22 @@ const Preloader = () => {
                         }
                     },
                 },
-                '+=0.1',
+                '+=0.05',
             );
 
             tl.to('.preloader-ready', {
                 autoAlpha: 1,
-                duration: 0.2,
+                duration: 0.15,
             });
 
             tl.to('.preloader-item', {
                 y: '100%',
-                duration: 0.5,
-                stagger: 0.08,
-                delay: 0.3,
+                duration: 0.3,
+                stagger: 0.04,
+                delay: 0.15,
             })
-                .to('.preloader-content', { autoAlpha: 0 }, '<0.1')
-                .to(preloaderRef.current, { autoAlpha: 0 }, '<0.3');
+                .to('.preloader-content', { autoAlpha: 0, duration: 0.25 }, '<0.1')
+                .to(preloaderRef.current, { autoAlpha: 0, duration: 0.25 }, '<0.15');
         },
         { scope: preloaderRef },
     );

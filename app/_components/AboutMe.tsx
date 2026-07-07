@@ -14,19 +14,24 @@ const AboutMe = () => {
 
     useGSAP(
         () => {
-            gsap.from('.slide-up-and-fade', {
-                y: 40,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.06,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    id: 'about-me-in',
-                    trigger: container.current,
-                    start: 'top 90%',
-                    toggleActions: 'play none none none',
+            gsap.fromTo(
+                '.slide-up-and-fade',
+                { y: 40, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.6,
+                    stagger: 0.06,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        id: 'about-me-in',
+                        trigger: container.current,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none',
+                        once: true,
+                    },
                 },
-            });
+            );
         },
         { scope: container },
     );
