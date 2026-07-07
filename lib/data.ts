@@ -284,16 +284,16 @@ export const PROJECTS: IProject[] = [
             'https://apps.apple.com/ng/app/9lives-social-productivity/id6752275333',
         thumbnail:
             'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/55/dc/9f/55dc9fc3-927c-5cb5-784c-c0b3d7ed91ea/AppIcon-0-0-1x_U007epad-0-1-85-220.png/1200x630wa.jpg',
-        techStack: [],
+        techStack: ['React Native', 'Expo'],
         images: [],
         year: 2025,
         description:
             '9lives blends productivity and social accountability — notes, lists, and folders with AI-assisted note enhancement, flashcard conversion, and image-to-text scanning, plus a social layer for sharing progress and keeping daily streaks.',
-        role: 'Software Engineer, contributing across both the web and mobile app — built authentication flows and worked on database optimization.',
+        role: 'Mobile Developer (Contract) — built and maintained the React Native/Expo app, working directly with the founder on scope and priorities.',
         caseStudy: {
-            problem: 'A productivity app and a social app usually pull in opposite directions — one wants a quiet, private workspace, the other wants activity worth sharing. 9lives set out to do both at once, across a web and a mobile app hitting the same backend, which meant auth and data access had to behave identically on both surfaces.',
-            approach: 'Focused on the authentication layer — building login flows that work the same way whether a user is on web or mobile — and on database optimization as the note, folder, and streak data grew. That backend work sits underneath the AI-assisted features (note enhancement, flashcard generation, image-to-text scanning) and the social layer (progress sharing, streaks) that make up the rest of the product.',
-            impact: 'Shipped as a live iOS app under Benekan Technologies, with an auth and data layer built to hold up consistently across both the web and mobile clients rather than diverging between platforms.',
+            problem: "9lives needed native-level performance on both iOS and Android from a shared codebase, on a team small enough that there wasn't a separate platform team per OS — and product requirements arrived as founder priorities and scope decisions, not fully-specified tickets, which had to be translated into accessible, high-fidelity UI directly.",
+            approach: 'Built and maintained the React Native/Expo app on a shared codebase, keeping native-level performance parity between iOS and Android rather than letting one platform lag. Worked directly with the founder to turn product requirements into high-fidelity, accessible UI, and extended the app with third-party API integrations via Expo — including speech transcription — on top of the core AI-assisted note-taking and social-streak features.',
+            impact: 'Shipped as a live iOS app under Benekan Technologies, with a single React Native/Expo codebase carrying both platforms and a feature set (speech transcription, AI note tools, social streaks) built through direct, fast-moving collaboration with the founder.',
         },
     },
     {
@@ -354,12 +354,17 @@ export const PROJECTS: IProject[] = [
         slug: 'evoolv',
         liveUrl: 'https://www.evoolv.com/',
         thumbnail: 'https://www.evoolv.com/evoolv.svg',
-        techStack: [],
+        techStack: ['TypeScript'],
         images: [],
         year: 2025,
         description:
             'Evoolv is an electric vehicle marketplace for Nigeria, facilitating the purchasing and financing of EVs through an integrated platform.',
-        role: '',
+        role: 'Frontend Developer (Nov 2025 - Feb 2026) — established UI/UX engineering standards and a reusable component library, built API integration layers, and implemented state management and CI/CD workflows.',
+        caseStudy: {
+            problem: 'Evoolv was in a high-growth, fast-iteration phase — the kind of stretch where a frontend codebase either gets a design system and real engineering standards early, or accumulates one-off components and inconsistent UI patterns that get expensive to untangle later. On top of that, connecting third-party services into core workflows needed contracts that held up as those integrations changed.',
+            approach: 'Established UI/UX engineering standards and a reusable component library to streamline the design-to-development handoff and keep the product visually consistent as new features shipped quickly. Built the API integration layers connecting third-party services to core workflows, using Postman for contract testing and documentation so integration breakages showed up before release, not after. Implemented state management and CI/CD workflows to keep the codebase type-safe and maintainable through the high-growth period rather than letting velocity erode code quality.',
+            impact: 'Left Evoolv with a reusable component library, documented API contracts, and CI/CD workflows in place — engineering foundations built to survive a fast-iteration phase rather than get rebuilt after it.',
+        },
     },
     {
         title: 'Terminal Portfolio',
@@ -382,16 +387,16 @@ export const PROJECTS: IProject[] = [
         title: 'Runwae',
         slug: 'runwae',
         liveUrl: 'https://www.runwae.io/',
-        techStack: ['React', 'Node.js'],
+        techStack: ['React Native', 'Expo'],
         images: [],
         year: 2026,
         description:
             'Runwae streamlines group travel planning — friends collaboratively build itineraries, book flights and hotels together, and automatically split shared expenses, available on web, iOS, and Android.',
-        role: 'Full-Stack Engineer — built the React frontend, Node.js backend, and real-time features.',
+        role: 'Mobile Developer (Contract) — architected the cross-platform React Native/Expo app and led UI/UX implementation from design handoff to shipped feature.',
         caseStudy: {
-            problem: 'Coordinating a group trip usually means a scattered mix of group chats, spreadsheets, and separate booking receipts — someone ends up manually reconciling who paid for what after the fact, with no single source of truth for the itinerary everyone actually agreed on.',
-            approach: "Built the React frontend and Node.js backend, with real-time features so a group's itinerary, bookings, and expense splits stay in sync as multiple people edit them concurrently, instead of requiring someone to refresh and manually merge changes.",
-            impact: 'Shipped as a live product across web and mobile that consolidates itinerary planning, group booking, and automatic expense splitting into one real-time experience, replacing the group-chat-plus-spreadsheet workflow most trips default to.',
+            problem: "Shipping Runwae natively on both iOS and Android without doubling the development work meant the mobile app couldn't be built as two separate codebases — and the designs handed off needed to become fluid, accessible interfaces good enough to hold onto users well past the first session, not just look right in Figma.",
+            approach: 'Architected the cross-platform mobile app with React Native and Expo, maintaining one unified codebase across iOS and Android to cut duplicate development effort rather than maintaining parallel native apps. Owned UI/UX implementation end-to-end from design handoff to shipped feature, with a specific focus on fluid, accessible interfaces built to support strong Day-30 user engagement rather than just a good first impression.',
+            impact: 'Shipped a single React Native/Expo codebase powering Runwae on both iOS and Android, with UI/UX work aimed squarely at Day-30 retention rather than one-time app-store polish.',
         },
     },
     {
@@ -486,12 +491,48 @@ export const CERTIFICATIONS = [
 
 export const MY_EXPERIENCE = [
     {
+        title: 'Backend & Mobile Developer',
+        company: 'Mecfur',
+        duration: 'Apr 2026 - Present',
+        highlights: [
+            'Building the backend (Nest.js, MongoDB) for a live-location mechanic-finder app, powering real-time proximity search and matching between users and nearby mechanics.',
+            'Developing the companion React Native mobile app, integrating live GPS tracking to surface nearby mechanics on a map view.',
+            'Designing API endpoints for location updates, mechanic profiles, and request/matching flows — currently heading into launch phase.',
+        ],
+    },
+    {
+        title: 'Mobile Developer',
+        company: 'Drop App',
+        duration: 'Apr 2026 - Present',
+        highlights: [
+            'Building and maintaining the driver-facing mobile app on both Android and iOS using React Native — currently heading into launch phase.',
+        ],
+    },
+    {
+        title: 'Full-Stack Developer',
+        company: 'Nigeria Files',
+        duration: 'Apr 2026 - Jul 2026',
+        highlights: [
+            'Built full-stack features end-to-end using Next.js on the frontend and Nest.js on the backend, with Prisma and PostgreSQL for data modeling.',
+            'Handled infrastructure tasks including subdomain and DNS configuration for the platform.',
+            'Designed and implemented database schemas in PostgreSQL via Prisma to support core application data.',
+        ],
+    },
+    {
+        title: 'Frontend Developer',
+        company: 'Fingate',
+        duration: 'Apr 2026 - Jul 2026',
+        highlights: [
+            'Updated and maintained the marketing landing page (Next.js, TypeScript), refreshing content and UI to better reflect the product.',
+        ],
+    },
+    {
         title: 'Mobile Developer',
         company: 'Runwae',
-        duration: 'Jan 2026 - Present',
+        duration: 'Jan 2026 - Apr 2026',
         highlights: [
-            'Architected a cross-platform mobile ecosystem with React Native and Expo, cutting development overhead by 40% while keeping native-level performance.',
-            'Established CI/CD pipelines and automated testing for the mobile stack, achieving 99.9% crash-free sessions.',
+            'Architected a cross-platform mobile app using React Native and Expo, maintaining a unified codebase across iOS and Android to reduce duplicate development effort.',
+            'Led UI/UX implementation from design handoff to shipped feature, focusing on fluid, accessible interfaces to support strong Day-30 user engagement.',
         ],
     },
     {
@@ -499,8 +540,9 @@ export const MY_EXPERIENCE = [
         company: 'Evoolv',
         duration: 'Nov 2025 - Feb 2026',
         highlights: [
-            'Led UI/UX engineering standards, building a reusable component library and design system for the team.',
-            'Engineered API orchestration layers, using Postman for rigorous contract testing and documentation.',
+            'Established UI/UX engineering standards and a reusable component library, streamlining the design-to-development handoff and improving consistency across the product.',
+            'Built API integration layers and used Postman for contract testing and documentation when connecting third-party services to core workflows.',
+            'Implemented state management and CI/CD workflows to keep the codebase type-safe and maintainable during a high-growth, fast-iteration phase.',
         ],
     },
     {
@@ -508,8 +550,9 @@ export const MY_EXPERIENCE = [
         company: '9lives',
         duration: 'Aug 2025 - Jan 2026',
         highlights: [
-            'Scaled a cross-platform mobile ecosystem with React Native and Expo, accelerating time-to-market by 40%.',
-            'Integrated APIs and third-party services via Expo, including speech transcription.',
+            'Built and maintained a React Native/Expo mobile app on a shared codebase, keeping native-level performance parity between iOS and Android.',
+            'Translated product requirements into high-fidelity, accessible UI, working directly with the founder on scope and priorities.',
+            'Integrated third-party APIs via Expo, including speech transcription, to extend core app functionality.',
         ],
     },
     {
@@ -517,8 +560,10 @@ export const MY_EXPERIENCE = [
         company: 'ExamCrush',
         duration: 'Jul 2025 - Aug 2025',
         highlights: [
-            'Refactored and modernized legacy codebases, reducing technical debt by 20%.',
-            'Introduced end-to-end automated testing with Vitest, cutting QA time by 30%.',
+            'Refactored legacy code to reduce technical debt and improve scalability.',
+            'Introduced end-to-end automated testing with Vitest, cutting QA time.',
+            'Led performance optimization work that improved load times and user engagement.',
+            'Collaborated with backend developers to integrate real-time updates and personalized data delivery.',
         ],
     },
     {
@@ -526,17 +571,10 @@ export const MY_EXPERIENCE = [
         company: 'BrandDrive',
         duration: 'Oct 2024 - Mar 2025',
         highlights: [
-            'Deployed robust form handling with React Hook Form, reducing form bugs by 40%.',
-            'Built interactive dashboards and modals with ShadCN UI and Zustand, boosting task completion by 20%.',
-        ],
-    },
-    {
-        title: 'Frontend Developer',
-        company: 'HNG Tech',
-        duration: 'Jul 2024 - Oct 2024',
-        highlights: [
-            'Mentored teams delivering frontend features for 1000+ users across 8-week sprints.',
-            'Improved accessibility across 25+ screens to meet WCAG 2.1 AA, achieving a 100% Lighthouse accessibility score.',
+            'Built robust form handling with React Hook Form, reducing form-related bugs.',
+            'Delivered high-fidelity UI from Figma prototypes in close collaboration with the product team.',
+            'Built interactive dashboards and modals with Material UI and Zustand to improve task completion.',
+            'Implemented dynamic filtering and search with React and TypeScript to improve data accessibility.',
         ],
     },
 ];
