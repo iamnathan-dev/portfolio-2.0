@@ -20,7 +20,7 @@ export const GENERAL_INFO = {
 export const SOCIAL_LINKS = [
     { name: 'github', url: 'https://github.com/iamnathan-dev' },
     { name: 'linkedin', url: 'https://www.linkedin.com/in/iamnathan-dev' },
-    { name: 'twitter', url: 'https://x.com/iamnathan_dev' },
+    { name: 'twitter', url: 'https://x.com/bahdman4lyf' },
 ];
 
 export const TESTIMONIALS = [
