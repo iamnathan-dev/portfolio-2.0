@@ -88,10 +88,10 @@ const Banner = () => {
                         <span className="font-medium text-foreground">
                             Nathan
                         </span>
-                        . A creative Software Developer with 4+ years of
-                        experience building high-performance, scalable
-                        web and mobile products — from pixel-perfect UI to the
-                        APIs that power it.
+                        . A creative Software Developer with 5+ years of
+                        experience building high-performance, scalable web and
+                        mobile products — from pixel-perfect UI to the APIs that
+                        power it.
                     </p>
                     <div className="mt-9 flex flex-wrap items-center gap-4">
                         <Magnetic className="banner-button slide-up-and-fade inline-block">
@@ -132,7 +132,7 @@ const Banner = () => {
                 <div className="md:absolute bottom-[10%] right-[4%] flex md:flex-col gap-4 md:gap-8 text-center md:text-right">
                     <div className="slide-up-and-fade">
                         <Counter
-                            value={4}
+                            value={5}
                             suffix="+"
                             className="text-2xl sm:text-3xl font-anton text-primary mb-1"
                         />
@@ -158,7 +158,9 @@ const Banner = () => {
                             delay={0.2}
                             className="text-2xl sm:text-3xl font-anton text-primary mb-1"
                         />
-                        <p className="font-mono text-xs text-muted-foreground uppercase tracking-wide">Hours Worked</p>
+                        <p className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
+                            Hours Worked
+                        </p>
                     </div>
                 </div>
             </div>
